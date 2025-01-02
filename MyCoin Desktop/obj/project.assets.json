@@ -11036,11 +11036,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Usuario\\Documents\\Github\\MyCoin Desktop\\MyCoin Desktop\\MyCoin Desktop.csproj",
+      "projectUniqueName": "C:\\Users\\Usuario\\Documents\\Github\\MyCoin-Desktop\\MyCoin Desktop\\MyCoin Desktop.csproj",
       "projectName": "MyCoin Desktop",
-      "projectPath": "C:\\Users\\Usuario\\Documents\\Github\\MyCoin Desktop\\MyCoin Desktop\\MyCoin Desktop.csproj",
+      "projectPath": "C:\\Users\\Usuario\\Documents\\Github\\MyCoin-Desktop\\MyCoin Desktop\\MyCoin Desktop.csproj",
       "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Usuario\\Documents\\Github\\MyCoin Desktop\\MyCoin Desktop\\obj\\",
+      "outputPath": "C:\\Users\\Usuario\\Documents\\Github\\MyCoin-Desktop\\MyCoin Desktop\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [

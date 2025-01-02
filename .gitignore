@@ -17,3 +17,6 @@ local.properties
 *.g.i.cs
 *.g.cs
 [Oo]bj/
+*.cache
+x64/
+*.json

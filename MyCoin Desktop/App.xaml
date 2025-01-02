@@ -1,7 +1,8 @@
-﻿<Application
+﻿<windows:PrismUnityApplication
     x:Class="MyCoin_Desktop.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:MyCoin_Desktop">
+    xmlns:local="using:MyCoin_Desktop"
+    xmlns:windows="using:Prism.Unity.Windows">
 
-</Application>
+</windows:PrismUnityApplication>
