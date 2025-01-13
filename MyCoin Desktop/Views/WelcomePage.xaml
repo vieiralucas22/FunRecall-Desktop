@@ -6,9 +6,80 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="#1D1C3B">
 
-    <Grid>
-        <TextBlock Text="Welcome"/>
+    <Grid Padding="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="50*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Width="auto" Height="auto" Grid.Column="0" CornerRadius="16">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25*"/>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="25*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.Background>
+                <ImageBrush 
+                    ImageSource="../Assets/Images/background.jpeg"
+                    Stretch="Fill"/>
+            </Grid.Background>
+
+            <TextBlock 
+                Text="Bem vindo ao EtCoin!" 
+                TextAlignment="Center" 
+                FontSize="40" 
+                FontWeight="SemiBold" 
+                Grid.Row="0" 
+                VerticalAlignment="Center"/>
+
+            <Image 
+                Width="419" 
+                Source="../Assets/Images/astroboy.png" 
+                Grid.Row="1"/>
+
+            <TextBlock 
+                Text="Um aplicativo de outro mundo para aprender educação financeira de maneira divertida!" 
+                TextAlignment="Center" 
+                FontSize="40" 
+                FontWeight="SemiBold" 
+                Grid.Row="2" 
+                TextWrapping="Wrap"/>
+
+        </Grid>
+
+        <Grid Grid.Column="1" Padding="0,100">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="70*"/>
+                <ColumnDefinition Width="15*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="1">
+                <TextBlock Text="Login" FontSize="80"/>
+
+                <TextBox PlaceholderText="Email" FontSize="20" BorderThickness="0" CornerRadius="12" Padding="15" Margin="0,50,0,0" InputScope="EmailSmtpAddress"/>
+                
+                <PasswordBox PlaceholderText="Senha" FontSize="20" BorderThickness="0" CornerRadius="12" Padding="15" Margin="0,20,0,0"/>
+
+                <Grid Margin="0, 20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <CheckBox Content="Lembre de mim" HorizontalAlignment="Left" Grid.Column="0" FontSize="15" />
+
+                    <Button Content="Esqueceu sua senha?" HorizontalAlignment="Right" Grid.Column="1" Background="Transparent" FontSize="15"/>
+                </Grid>
+
+                <Button Content="Entrar" HorizontalAlignment="Stretch" Padding="10" CornerRadius="12" Background="#49285F" FontSize="24"/>
+
+            </StackPanel>
+        </Grid>
+
     </Grid>
 </Page>
