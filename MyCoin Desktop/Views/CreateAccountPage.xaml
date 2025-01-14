@@ -4,6 +4,8 @@
       xmlns:local="using:MyCoin_Desktop.Views"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:prism="using:Prism.Windows.Mvvm"
+      prism:ViewModelLocator.AutoWireViewModel="True"
       mc:Ignorable="d"
       Background="#1D1C3B">
 
@@ -30,7 +32,7 @@
                        FontWeight="SemiBold"
                        Grid.Row="0"
                        VerticalAlignment="Center" />
-
+            
             <Image Width="419"
                    Source="../Assets/Images/astroboy.png"
                    Grid.Row="1" />
@@ -92,7 +94,8 @@
                         CornerRadius="12"
                         Background="#49285F"
                         FontSize="24"
-                        Margin="0,55,0,60" />
+                        Margin="0,55,0,30"
+                        Click="{x:Bind ViewModel.navigateToLogin}"/>
 
                 <Image Source="../Assets/Images/EtCoin_logo.png"
                        Width="190" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyCoin_Desktop.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,11 +18,11 @@ using Windows.UI.Xaml.Navigation;
 
 namespace MyCoin_Desktop.Views
 {
-    /// <summary>
-    /// Uma página vazia que pode ser usada isoladamente ou navegada dentro de um Quadro.
-    /// </summary>
     public sealed partial class CreateAccountPage : Page
     {
+
+        public CreateAccountPageViewModel ViewModel => (CreateAccountPageViewModel)DataContext;
+
         public CreateAccountPage()
         {
             this.InitializeComponent();

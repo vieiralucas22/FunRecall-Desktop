@@ -4,8 +4,11 @@
       xmlns:local="using:MyCoin_Desktop.Views"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:prism="using:Prism.Windows.Mvvm"
+      prism:ViewModelLocator.AutoWireViewModel="True"
       mc:Ignorable="d"
-      Background="#1D1C3B">
+      Background="#1D1C3B"
+      >
 
     <Grid Padding="20">
         <Grid.ColumnDefinitions>
@@ -101,7 +104,8 @@
                         Padding="10"
                         CornerRadius="12"
                         Background="#49285F"
-                        FontSize="24" />
+                        FontSize="24"
+                        Click="{x:Bind ViewModel.navigateToCreateAccount}"/>
 
                 <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Center"
