@@ -29,7 +29,7 @@ namespace MyCoin_Desktop
 
         protected override Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args) 
         {
-            NavigationService.Navigate("Login", null);
+            NavigationService.Navigate("CreateAccount", null);
             return Task.CompletedTask;
         }
        
