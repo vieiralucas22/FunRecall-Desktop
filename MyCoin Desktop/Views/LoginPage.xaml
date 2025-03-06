@@ -32,7 +32,7 @@
                 <ImageBrush ImageSource="../Assets/Images/background.jpeg" />
             </Grid.Background>
 
-            <TextBlock Text="Bem vindo ao EtCoin!"
+            <TextBlock Text="Bem vindo ao FunRecall!"
                        TextAlignment="Center"
                        FontSize="40"
                        FontWeight="SemiBold"
@@ -109,11 +109,11 @@
 
                 <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Center"
-                            Margin="0, 70, 0, 60">
+                            Margin="0, 60, 0, 60">
 
                     <TextBlock Text="Novo usuário? "
                                FontSize="20" />
-                    <Button Content="Crie uma nova conta!"
+                    <Button Content=" Crie uma nova conta!"
                             Background="Transparent"
                             FontSize="20"
                             Padding="0"
