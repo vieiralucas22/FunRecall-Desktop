@@ -1,4 +1,5 @@
-﻿using Prism.Unity.Windows;
+﻿using MyCoin_Desktop.Common;
+using Prism.Unity.Windows;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -29,7 +30,7 @@ namespace MyCoin_Desktop
 
         protected override Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args) 
         {
-            NavigationService.Navigate("CreateAccount", null);
+            NavigationService.Navigate(PageTokens.LOGIN_PAGE, null);
             return Task.CompletedTask;
         }
        
