@@ -30,7 +30,7 @@ namespace MyCoin_Desktop
 
         protected override Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args) 
         {
-            NavigationService.Navigate(PageTokens.LOGIN_PAGE, null);
+            NavigationService.Navigate("Home", null);
             return Task.CompletedTask;
         }
        
