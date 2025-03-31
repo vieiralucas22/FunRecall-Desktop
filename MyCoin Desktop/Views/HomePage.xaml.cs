@@ -13,16 +13,16 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// O modelo de item de Página em Branco está documentado em https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x416
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace MyCoin_Desktop
+namespace MyCoin_Desktop.Views
 {
     /// <summary>
-    /// Uma página vazia que pode ser usada isoladamente ou navegada dentro de um Quadro.
+    /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class HomePage : Page
     {
-        public MainPage()
+        public HomePage()
         {
             this.InitializeComponent();
         }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Usuario\\Documents\\Github\\MyCoin-Desktop\\MyCoin Desktop\\MyCoin Desktop.csproj": {}
+    "C:\\ContasGithub\\vieiralucas22\\MyCoin-Desktop\\MyCoin Desktop\\MyCoin Desktop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Usuario\\Documents\\Github\\MyCoin-Desktop\\MyCoin Desktop\\MyCoin Desktop.csproj": {
+    "C:\\ContasGithub\\vieiralucas22\\MyCoin-Desktop\\MyCoin Desktop\\MyCoin Desktop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Usuario\\Documents\\Github\\MyCoin-Desktop\\MyCoin Desktop\\MyCoin Desktop.csproj",
+        "projectUniqueName": "C:\\ContasGithub\\vieiralucas22\\MyCoin-Desktop\\MyCoin Desktop\\MyCoin Desktop.csproj",
         "projectName": "MyCoin Desktop",
-        "projectPath": "C:\\Users\\Usuario\\Documents\\Github\\MyCoin-Desktop\\MyCoin Desktop\\MyCoin Desktop.csproj",
+        "projectPath": "C:\\ContasGithub\\vieiralucas22\\MyCoin-Desktop\\MyCoin Desktop\\MyCoin Desktop.csproj",
         "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Usuario\\Documents\\Github\\MyCoin-Desktop\\MyCoin Desktop\\obj\\",
+        "outputPath": "C:\\ContasGithub\\vieiralucas22\\MyCoin-Desktop\\MyCoin Desktop\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -47,6 +47,10 @@
             "Microsoft.NETCore.UniversalWindowsPlatform": {
               "target": "Package",
               "version": "[6.2.14, )"
+            },
+            "Microsoft.UI.Xaml": {
+              "target": "Package",
+              "version": "[2.8.7, )"
             },
             "Prism.Core": {
               "target": "Package",
