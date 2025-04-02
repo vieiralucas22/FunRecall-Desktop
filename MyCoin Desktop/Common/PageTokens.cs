@@ -8,7 +8,11 @@ namespace MyCoin_Desktop.Common
 {
     public static class PageTokens
     {
-        public static readonly string LOGIN_PAGE = "Login";
-        public static readonly string CREATE_ACCOUNT_PAGE = "CreateAccount";
+        public const string LOGIN_PAGE = "Login";
+        public  const string CREATE_ACCOUNT_PAGE = "CreateAccount";
+        public const string TIC_TAC_TOE_PAGE = "TicTacToe";
+        public const string HANGMAN_PAGE = "Hangman";
+        public const string CHECKERS = "Checkers";
+        public const string WHAT_IS_MY_NUMBER = "WhatIsMyNumber";
     }
 }

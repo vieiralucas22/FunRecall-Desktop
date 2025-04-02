@@ -15,6 +15,12 @@
           }
         }
       },
+      "MaterialDesignThemes/5.2.1": {
+        "type": "package",
+        "build": {
+          "build/MaterialDesignThemes.targets": {}
+        }
+      },
       "Microsoft.Net.Native.Compiler/2.2.12-rel-31116-00": {
         "type": "package",
         "dependencies": {
@@ -705,6 +711,12 @@
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {
             "related": ".pdb;.XML"
           }
+        }
+      },
+      "MaterialDesignThemes/5.2.1": {
+        "type": "package",
+        "build": {
+          "build/MaterialDesignThemes.targets": {}
         }
       },
       "Microsoft.Net.Native.Compiler/2.2.12-rel-31116-00": {
@@ -1564,6 +1576,12 @@
           }
         }
       },
+      "MaterialDesignThemes/5.2.1": {
+        "type": "package",
+        "build": {
+          "build/MaterialDesignThemes.targets": {}
+        }
+      },
       "Microsoft.Net.Native.Compiler/2.2.12-rel-31116-00": {
         "type": "package",
         "dependencies": {
@@ -2420,6 +2438,12 @@
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {
             "related": ".pdb;.XML"
           }
+        }
+      },
+      "MaterialDesignThemes/5.2.1": {
+        "type": "package",
+        "build": {
+          "build/MaterialDesignThemes.targets": {}
         }
       },
       "Microsoft.Net.Native.Compiler/2.2.12-rel-31116-00": {
@@ -3283,6 +3307,12 @@
           }
         }
       },
+      "MaterialDesignThemes/5.2.1": {
+        "type": "package",
+        "build": {
+          "build/MaterialDesignThemes.targets": {}
+        }
+      },
       "Microsoft.Net.Native.Compiler/2.2.12-rel-31116-00": {
         "type": "package",
         "dependencies": {
@@ -4141,6 +4171,12 @@
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {
             "related": ".pdb;.XML"
           }
+        }
+      },
+      "MaterialDesignThemes/5.2.1": {
+        "type": "package",
+        "build": {
+          "build/MaterialDesignThemes.targets": {}
         }
       },
       "Microsoft.Net.Native.Compiler/2.2.12-rel-31116-00": {
@@ -5004,6 +5040,12 @@
           }
         }
       },
+      "MaterialDesignThemes/5.2.1": {
+        "type": "package",
+        "build": {
+          "build/MaterialDesignThemes.targets": {}
+        }
+      },
       "Microsoft.Net.Native.Compiler/2.2.12-rel-31116-00": {
         "type": "package",
         "dependencies": {
@@ -5862,6 +5904,12 @@
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {
             "related": ".pdb;.XML"
           }
+        }
+      },
+      "MaterialDesignThemes/5.2.1": {
+        "type": "package",
+        "build": {
+          "build/MaterialDesignThemes.targets": {}
         }
       },
       "Microsoft.Net.Native.Compiler/2.2.12-rel-31116-00": {
@@ -6725,6 +6773,49 @@
         "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.XML",
         "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll",
         "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.pdb"
+      ]
+    },
+    "MaterialDesignThemes/5.2.1": {
+      "sha512": "x8JDqNHJcTLLxIoVts3w7AbSq5Zo0FXTw89XqPN7+n0EKqLXFwWsywiUn08HDyTGAmZVJqbQsWKxKWCI8qfWsQ==",
+      "type": "package",
+      "path": "materialdesignthemes/5.2.1",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/MaterialDesignThemes.targets",
+        "build/Resources/Roboto/Roboto-Black.ttf",
+        "build/Resources/Roboto/Roboto-BlackItalic.ttf",
+        "build/Resources/Roboto/Roboto-Bold.ttf",
+        "build/Resources/Roboto/Roboto-BoldItalic.ttf",
+        "build/Resources/Roboto/Roboto-Italic.ttf",
+        "build/Resources/Roboto/Roboto-Light.ttf",
+        "build/Resources/Roboto/Roboto-LightItalic.ttf",
+        "build/Resources/Roboto/Roboto-Medium.ttf",
+        "build/Resources/Roboto/Roboto-MediumItalic.ttf",
+        "build/Resources/Roboto/Roboto-Regular.ttf",
+        "build/Resources/Roboto/Roboto-Thin.ttf",
+        "build/Resources/Roboto/Roboto-ThinItalic.ttf",
+        "build/Resources/Roboto/RobotoCondensed-Bold.ttf",
+        "build/Resources/Roboto/RobotoCondensed-BoldItalic.ttf",
+        "build/Resources/Roboto/RobotoCondensed-Italic.ttf",
+        "build/Resources/Roboto/RobotoCondensed-Light.ttf",
+        "build/Resources/Roboto/RobotoCondensed-LightItalic.ttf",
+        "build/Resources/Roboto/RobotoCondensed-Regular.ttf",
+        "docs/README.md",
+        "images/MaterialDesignThemes.Icon.png",
+        "lib/net462/MaterialDesignThemes.Wpf.dll",
+        "lib/net462/MaterialDesignThemes.Wpf.pdb",
+        "lib/net462/MaterialDesignThemes.Wpf.xml",
+        "lib/net6.0/MaterialDesignThemes.Wpf.dll",
+        "lib/net6.0/MaterialDesignThemes.Wpf.pdb",
+        "lib/net6.0/MaterialDesignThemes.Wpf.xml",
+        "lib/net8.0/MaterialDesignThemes.Wpf.dll",
+        "lib/net8.0/MaterialDesignThemes.Wpf.pdb",
+        "lib/net8.0/MaterialDesignThemes.Wpf.xml",
+        "materialdesignthemes.5.2.1.nupkg.sha512",
+        "materialdesignthemes.nuspec",
+        "tools/VisualStudioToolsManifest.xml"
       ]
     },
     "Microsoft.Net.Native.Compiler/2.2.12-rel-31116-00": {
@@ -11384,6 +11475,7 @@
   },
   "projectFileDependencyGroups": {
     "UAP,Version=v10.0.17763": [
+      "MaterialDesignThemes >= 5.2.1",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 6.2.14",
       "Microsoft.UI.Xaml >= 2.8.7",
       "Prism.Core >= 6.3.0",
@@ -11435,6 +11527,10 @@
     "frameworks": {
       "uap10.0.17763": {
         "dependencies": {
+          "MaterialDesignThemes": {
+            "target": "Package",
+            "version": "[5.2.1, )"
+          },
           "Microsoft.NETCore.UniversalWindowsPlatform": {
             "target": "Package",
             "version": "[6.2.14, )"

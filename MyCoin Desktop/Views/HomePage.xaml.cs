@@ -1,30 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+﻿using MyCoin_Desktop.Common;
+using Microsoft.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+using NavigationView = Microsoft.UI.Xaml.Controls.NavigationView;
+using NavigationViewSelectionChangedEventArgs = Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs;
+using NavigationViewItem = Microsoft.UI.Xaml.Controls.NavigationViewItem;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace MyCoin_Desktop.Views
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class HomePage : Page
     {
         public HomePage()
         {
             this.InitializeComponent();
+            contentFrame.Navigate(typeof(LoginPage));
+        }
+
+        public void NvSample_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            if (args.SelectedItem is NavigationViewItem item)
+            {
+                switch (item.Tag)
+                {
+                    case PageTokens.LOGIN_PAGE:
+                        contentFrame.Navigate(typeof(LoginPage));
+                        break;
+                    case PageTokens.CREATE_ACCOUNT_PAGE:
+                        contentFrame.Navigate(typeof(CreateAccountPage));
+                        break;
+                    case PageTokens.TIC_TAC_TOE_PAGE:
+                       // contentFrame.Navigate(typeof(SamplePage2));
+                        break;
+                    case PageTokens.HANGMAN_PAGE:
+                      //  contentFrame.Navigate(typeof(SamplePage2));
+                        break;
+
+                    case PageTokens.CHECKERS:
+                       // contentFrame.Navigate(typeof(SamplePage2));
+                        break;
+
+                    case PageTokens.WHAT_IS_MY_NUMBER:
+                       // contentFrame.Navigate(typeof(SamplePage2));
+                        break;
+                }
+            }
         }
     }
 }
