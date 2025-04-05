@@ -20,4 +20,5 @@ local.properties
 *.cache
 x64/
 *.json
-obj/x64/
+/obj/x64/
+/MyCoin\ Desktop/obj/
