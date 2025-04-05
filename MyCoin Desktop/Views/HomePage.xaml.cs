@@ -12,8 +12,8 @@ namespace MyCoin_Desktop.Views
     {
         public HomePage()
         {
-            this.InitializeComponent();
-            contentFrame.Navigate(typeof(LoginPage));
+            InitializeComponent();
+            contentFrame.Navigate(typeof(TicTacToePage));
         }
 
         public void NvSample_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -22,14 +22,8 @@ namespace MyCoin_Desktop.Views
             {
                 switch (item.Tag)
                 {
-                    case PageTokens.LOGIN_PAGE:
-                        contentFrame.Navigate(typeof(LoginPage));
-                        break;
-                    case PageTokens.CREATE_ACCOUNT_PAGE:
-                        contentFrame.Navigate(typeof(CreateAccountPage));
-                        break;
                     case PageTokens.TIC_TAC_TOE_PAGE:
-                       // contentFrame.Navigate(typeof(SamplePage2));
+                        contentFrame.Navigate(typeof(TicTacToePage));
                         break;
                     case PageTokens.HANGMAN_PAGE:
                       //  contentFrame.Navigate(typeof(SamplePage2));

@@ -15,7 +15,7 @@
             <muxc:NavigationView.MenuItems>
                 <muxc:NavigationViewItem Icon="PreviewLink"
                                          Content="Jogo da velha"
-                                         Tag="Login" />
+                                         Tag="TicTacToe" />
                 <muxc:NavigationViewItem Icon="ProtectedDocument"
                                          Content="Jogo da forca"
                                          Tag="CreateAccount" />

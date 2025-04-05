@@ -34,6 +34,7 @@
             <TextBlock Text="Bem vindo ao FunRecall!"
                        TextAlignment="Center"
                        FontSize="40"
+                       Foreground="White"
                        FontWeight="SemiBold"
                        Grid.Row="0"
                        VerticalAlignment="Center" />
@@ -47,6 +48,7 @@
                        FontSize="40"
                        FontWeight="SemiBold"
                        Grid.Row="2"
+                       Foreground="White"
                        TextWrapping="Wrap" />
 
         </Grid>
@@ -61,7 +63,8 @@
 
             <StackPanel Grid.Column="1">
                 <TextBlock Text="Login"
-                           FontSize="60" />
+                           FontSize="60"
+                           Foreground="White" />
 
                 <TextBox PlaceholderText="Email"
                          FontSize="20"
@@ -69,7 +72,8 @@
                          CornerRadius="12"
                          Padding="15"
                          Margin="0,50,0,0"
-                         InputScope="EmailSmtpAddress" />
+                         InputScope="EmailSmtpAddress"
+                         TextChanged="TextBox_TextChanged" />
 
                 <PasswordBox PlaceholderText="Senha"
                              FontSize="20"
@@ -87,6 +91,7 @@
                     <CheckBox Content="Lembre de mim"
                               HorizontalAlignment="Left"
                               Grid.Column="0"
+                              Foreground="White"
                               FontSize="15" />
 
                     <Button Content="Esqueceu sua senha?"
@@ -95,6 +100,7 @@
                             Grid.Column="1"
                             Background="Transparent"
                             FontSize="15"
+                            Foreground="White"
                             Click="Button_Click" />
                 </Grid>
 
@@ -103,6 +109,7 @@
                         Padding="10"
                         CornerRadius="12"
                         Background="#49285F"
+                        Foreground="White"
                         FontSize="24"
                         Click="{x:Bind ViewModel.navigateToCreateAccount}"/>
 
@@ -111,11 +118,13 @@
                             Margin="0, 60, 0, 60">
 
                     <TextBlock Text="Novo usuário? "
-                               FontSize="20" />
+                               FontSize="20"
+                               Foreground="White" />
                     <Button Content=" Crie uma nova conta!"
                             Background="Transparent"
                             FontSize="20"
                             Padding="0"
+                            
                             Foreground="#49285F" />
                 </StackPanel>
 
