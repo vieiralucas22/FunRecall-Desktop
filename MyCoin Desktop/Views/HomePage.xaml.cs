@@ -13,7 +13,7 @@ namespace MyCoin_Desktop.Views
         public HomePage()
         {
             InitializeComponent();
-            contentFrame.Navigate(typeof(TicTacToePage));
+            contentFrame.Navigate(typeof(LoginPage));
         }
 
         public void NvSample_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)

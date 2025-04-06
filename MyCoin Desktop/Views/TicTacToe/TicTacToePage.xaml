@@ -5,7 +5,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d"
-      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+      xmlns:prism="using:Prism.Windows.Mvvm"
+      prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid Padding="20">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2.5*"/>
@@ -54,7 +56,9 @@
                     Margin="0,30,0,30"
                     HorizontalAlignment="Center"
                     CornerRadius="12"
-                    FontFamily="Comic Sans MS"/>
+                    FontFamily="Comic Sans MS"
+                    x:Name="PART_LocalMultiplayerButton"
+                    Click="{x:Bind ViewModel.GoToMatchPage}"/>
 
             <Button Content="Online Multiplayer"
                     FontSize="40"
@@ -65,7 +69,8 @@
                     MinWidth="400"
                     HorizontalAlignment="Center"
                     CornerRadius="12"
-                    FontFamily="Comic Sans MS"/>
+                    FontFamily="Comic Sans MS"
+                    x:Name="PART_OnlineMultiplayerButton"/>
         </StackPanel>
 
         <Image Width="220"

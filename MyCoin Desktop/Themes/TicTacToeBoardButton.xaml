@@ -1,0 +1,24 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="using:MyCoin_Desktop"
+                    xmlns:controls="using:MyCoin_Desktop.Controls">
+    <Style TargetType="controls:TicTacToeBoardButton" >
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:TicTacToeBoardButton">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="24"
+                            Margin="8">
+                        <Button Background="#8e7afd"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch">
+
+                        </Button>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
