@@ -19,7 +19,11 @@
             <ColumnDefinition Width="2.5*" />
         </Grid.ColumnDefinitions>
 
-        <controls:TicTacToeBoard Grid.Column="1"/>
+        <controls:PlayerCardInfo />
+
+        <controls:TicTacToeBoard Grid.Column="1" />
+
+        <controls:PlayerCardInfo Grid.Column="2"/>
 
     </Grid>
 </Page>

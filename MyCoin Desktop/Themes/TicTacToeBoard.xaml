@@ -9,8 +9,8 @@
                     <Grid Background="#80000000"
                           CornerRadius="16"
                           Padding="20"
-                          MaxWidth="700"
-                          MaxHeight="700">
+                          MaxWidth="650"
+                          MaxHeight="650">
 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />

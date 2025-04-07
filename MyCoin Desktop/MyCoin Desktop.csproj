@@ -122,6 +122,7 @@
     <Compile Include="Common\PageTokens.cs" />
     <Compile Include="Controls\TicTacToeBoard.cs" />
     <Compile Include="Controls\TicTacToeBoardButton.cs" />
+    <Compile Include="Controls\PlayerCardInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CreateAccountPageViewModel.cs" />
     <Compile Include="ViewModels\HomePageViewModel.cs" />
@@ -150,10 +151,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Images\astroboy.png" />
+    <Content Include="Assets\Images\Avatar1.png" />
+    <Content Include="Assets\Images\Avatar2.png" />
+    <Content Include="Assets\Images\Avatar3.png" />
+    <Content Include="Assets\Images\Avatar4.png" />
+    <Content Include="Assets\Images\Avatar5.jpeg" />
+    <Content Include="Assets\Images\Avatar6.png" />
+    <Content Include="Assets\Images\Avatar7.jpeg" />
+    <Content Include="Assets\Images\Avatar8.jpeg" />
+    <Content Include="Assets\Images\Avatar9.png" />
     <Content Include="Assets\Images\background.jpeg" />
     <Content Include="Assets\Images\EtCoin_logo.png" />
     <Content Include="Assets\Images\games_background.jpg" />
     <Content Include="Assets\Images\games_match_background.jpg" />
+    <Content Include="Assets\Images\O.png" />
+    <Content Include="Assets\Images\X.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -177,6 +189,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\TicTacToeBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\PlayerCardInfoStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -15,6 +15,7 @@ namespace MyCoin_Desktop.Common
         public const string HANGMAN_PAGE = "Hangman";
         public const string CHECKERS = "Checkers";
         public const string WHAT_IS_MY_NUMBER = "WhatIsMyNumber";
+        public const string HOME = "Home";
 
     }
 }

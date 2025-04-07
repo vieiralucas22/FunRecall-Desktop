@@ -12,6 +12,7 @@
 
                 <ResourceDictionary Source="Themes/TicTacToeBoard.xaml" />
                 <ResourceDictionary Source="Themes/TicTacToeBoardButton.xaml" />
+                <ResourceDictionary Source="Themes/PlayerCardInfoStyle.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
