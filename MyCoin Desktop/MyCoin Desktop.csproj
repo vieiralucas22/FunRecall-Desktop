@@ -119,6 +119,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\Enums\Players.cs" />
     <Compile Include="Common\PageTokens.cs" />
     <Compile Include="Controls\TicTacToeBoard.cs" />
     <Compile Include="Controls\TicTacToeBoardButton.cs" />
@@ -127,6 +128,7 @@
     <Compile Include="ViewModels\CreateAccountPageViewModel.cs" />
     <Compile Include="ViewModels\HomePageViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
+    <Compile Include="ViewModels\TicTacToe\TicTacToeMatchPageViewModel.cs" />
     <Compile Include="ViewModels\TicTacToe\TicTacToePageViewModel.cs" />
     <Compile Include="Views\CreateAccountPage.xaml.cs">
       <DependentUpon>CreateAccountPage.xaml</DependentUpon>
@@ -234,7 +236,6 @@
       <Version>6.3.0</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
