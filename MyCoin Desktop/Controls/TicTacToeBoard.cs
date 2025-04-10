@@ -61,25 +61,20 @@ namespace MyCoin_Desktop.Controls
 
         private void Btn_click(object sender, RoutedEventArgs args)
         {
-            var boardButton = sender as Button;
+            var boardButton = sender as TicTacToeBoardButton;
 
             var (line, column) = GetLineAndColumn(boardButton.Tag.ToString());
 
-            boardButton.Content = CurrentPlayer == Players.PLAYER_1 ?
-                GetBackgroundImage(true) : GetBackgroundImage(false);
+            boardButton.SetBackgroundImageButton(GetBackgroundBitmapImage(CurrentPlayer == Players.PLAYER_1));
 
+            var x =VisualStateManager.GoToState(boardButton, "Selected", false);
         }
 
-        private Image GetBackgroundImage(bool isPlayerOne)
+        private BitmapImage GetBackgroundBitmapImage(bool isPlayerOne)
         {
-            var image = new Image();
-
-            image.Source = isPlayerOne ?
+            return isPlayerOne ?
                 new BitmapImage(new Uri("ms-appx:///Assets/Images/X.png"))
                 : new BitmapImage(new Uri("ms-appx:///Assets/Images/O.png"));
-
-            return image;
-
         }
 
         private (string, string) GetLineAndColumn(string tag)
