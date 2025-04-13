@@ -120,6 +120,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\Enums\Players.cs" />
+    <Compile Include="Common\GameConstants.cs" />
     <Compile Include="Common\PageTokens.cs" />
     <Compile Include="Controls\TicTacToeBoard.cs" />
     <Compile Include="Controls\TicTacToeBoardButton.cs" />

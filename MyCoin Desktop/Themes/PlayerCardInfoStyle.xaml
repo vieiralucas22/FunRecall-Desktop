@@ -13,15 +13,18 @@
                         <StackPanel Orientation="Vertical"
                                     Background="#80000000"
                                     Padding="50">
-                            <Grid Width="100"
+                            <Grid x:Name="PlayerAvatar"
+                                  Width="100"
                                   Height="100"
-                                  CornerRadius="100">
+                                  CornerRadius="100"
+                                  Visibility="Collapsed">
                                 <Grid.Background>
                                     <ImageBrush ImageSource="ms-appx:///Assets/Images/Avatar1.png" />
                                 </Grid.Background>
                             </Grid>
 
-                            <TextBlock Text="Lucas Vieira Brito"
+                            <TextBlock x:Name="PlayerName"
+                                       Text="Lucas Vieira Brito"
                                        Foreground="White"
                                        HorizontalAlignment="Center"
                                        FontSize="18"
@@ -30,7 +33,8 @@
                                        Margin="0,10" />
 
 
-                            <Image Source="ms-appx:///Assets/Images/O.png"
+                            <Image x:Name="PlayerRepresentation"
+                                   Source="ms-appx:///Assets/Images/O.png"
                                    Width="50" />
 
                         </StackPanel>

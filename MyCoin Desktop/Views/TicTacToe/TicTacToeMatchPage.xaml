@@ -6,12 +6,19 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d"
       xmlns:controls="using:MyCoin_Desktop.Controls"
+      xmlns:prism="using:Prism.Windows.Mvvm"
+      prism:ViewModelLocator.AutoWireViewModel="True"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid Padding="20">
         <Grid.Background>
             <ImageBrush ImageSource="ms-appx:///Assets/Images/games_match_background.jpg" />
         </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2.5*" />
@@ -19,11 +26,23 @@
             <ColumnDefinition Width="2.5*" />
         </Grid.ColumnDefinitions>
 
-        <controls:PlayerCardInfo />
+        <TextBlock d:Text="Player 1 Wins!"
+                   FontSize="50"
+                   Grid.ColumnSpan="3"
+                   HorizontalAlignment="Center"
+                   FontWeight="SemiBold"
+                   FontFamily="Comic Sans MS" 
+                   Foreground="LightGreen"/>
 
-        <controls:TicTacToeBoard Grid.Column="1" />
+        <controls:PlayerCardInfo x:Name="CardPlayer1"
+                                 Grid.Row="1" />
 
-        <controls:PlayerCardInfo Grid.Column="2"/>
+        <controls:TicTacToeBoard Grid.Column="1"
+                                 Grid.Row="1" />
+
+        <controls:PlayerCardInfo x:Name="CardPlayer2"
+                                 Grid.Column="2"
+                                 Grid.Row="1" />
 
     </Grid>
 </Page>

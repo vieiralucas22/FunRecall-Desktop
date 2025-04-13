@@ -66,8 +66,6 @@ namespace MyCoin_Desktop.Controls
             var (line, column) = GetLineAndColumn(boardButton.Tag.ToString());
 
             boardButton.SetBackgroundImageButton(GetBackgroundBitmapImage(CurrentPlayer == Players.PLAYER_1));
-
-            var x =VisualStateManager.GoToState(boardButton, "Selected", false);
         }
 
         private BitmapImage GetBackgroundBitmapImage(bool isPlayerOne)
