@@ -38,7 +38,6 @@ namespace MyCoin_Desktop.Views
             {
                 _playerTwoCardInfo.PlayerName.Text = GameConstants.PLAYER_TWO;
                 _playerTwoCardInfo.PlayerRepresentation.Source = new BitmapImage(new Uri(GameConstants.PLAYER_TWO_SOURCE));
-
             }
         }
 

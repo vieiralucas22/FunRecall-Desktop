@@ -6,30 +6,38 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:TicTacToeBoardButton">
-                <Grid x:Name="RootGrid"
-                      BorderBrush="{TemplateBinding BorderBrush}"
-                      BorderThickness="{TemplateBinding BorderThickness}"
-                      CornerRadius="24"
-                      Margin="8"
-                      Background="#8e7afd"
-                      HorizontalAlignment="Stretch"
-                      VerticalAlignment="Stretch">
+                    <Grid x:Name="RootGrid"
+                          BorderBrush="{TemplateBinding BorderBrush}"
+                          BorderThickness="{TemplateBinding BorderThickness}"
+                          CornerRadius="24"
+                          Margin="8"
+                          Background="#8e7afd"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch">
 
-                    <VisualStateManager.VisualStateGroups>
-                        <VisualStateGroup x:Name="TicTacToeBoardButtonStates">
-                            <VisualState x:Name="Normal" />
-                            <VisualState x:Name="PointerOver">
-                                <VisualState.Setters>
-                                    <Setter Target="RootGrid.Background"
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="TicTacToeBoardButtonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="PointerOver">
+                                    <VisualState.Setters>
+                                        <Setter Target="RootGrid.Background"
                                                 Value="#808e7afd" />
                                         <Setter Target="RootGrid.Margin"
                                                 Value="4" />
                                     </VisualState.Setters>
-                            </VisualState>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <VisualState.Setters>
+                                        <Setter Target="RootGrid.Background"
+                                                Value="#8e7afd" />
+                                    </VisualState.Setters>
+                                </VisualState>
                             </VisualStateGroup>
-                    </VisualStateManager.VisualStateGroups>
+                        </VisualStateManager.VisualStateGroups>
 
-                        <Image x:Name="XorOImage" Source="ms-appx:///Assets/Images/O.png" Visibility="Collapsed"/>
+                        <Image x:Name="XorOImage"
+                               Source="ms-appx:///Assets/Images/O.png"
+                               Visibility="Collapsed" />
 
                     </Grid>
                 </ControlTemplate>

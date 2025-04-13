@@ -4,24 +4,14 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Media;
+using MyCoin_Desktop.Common;
+using System.Diagnostics;
 
 namespace MyCoin_Desktop.Controls
 {
     public sealed class TicTacToeBoard : Control
     {
-
-        #region DependencyProperties
-
-        public Players CurrentPlayer
-        {
-            get { return (Players)GetValue(CurrentPlayerProperty); }
-            set { SetValue(CurrentPlayerProperty, value); }
-        }
-
-        public static readonly DependencyProperty CurrentPlayerProperty =
-            DependencyProperty.Register("CurrentPlayer", typeof(Players), typeof(TicTacToeBoard), new PropertyMetadata(Players.PLAYER_1));
-
-        #endregion
+        #region Xaml Components
 
         private TicTacToeBoardButton _btn1;
         private TicTacToeBoardButton _btn2;
@@ -32,6 +22,25 @@ namespace MyCoin_Desktop.Controls
         private TicTacToeBoardButton _btn7;
         private TicTacToeBoardButton _btn8;
         private TicTacToeBoardButton _btn9;
+
+        #endregion
+
+        #region Properties
+
+        private bool _isPlayerOne = true;
+
+        public bool IsPlayerOne
+        {
+            get { return _isPlayerOne; }
+            set { _isPlayerOne = value; }
+        }
+
+        #endregion
+
+        private int[,] _boardGameMatriz = new int[3, 3];
+
+        private int _countButtonValue = 0;
+
 
         public TicTacToeBoard()
         {
@@ -65,24 +74,61 @@ namespace MyCoin_Desktop.Controls
 
             var (line, column) = GetLineAndColumn(boardButton.Tag.ToString());
 
-            boardButton.SetBackgroundImageButton(GetBackgroundBitmapImage(CurrentPlayer == Players.PLAYER_1));
+            boardButton.SetBackgroundImageButton(GetBackgroundBitmapImage());
+            boardButton.IsEnabled = false;
+
+            CheckGameIsOver(line, column);
+            ChangeCurrentPlayer();
         }
 
-        private BitmapImage GetBackgroundBitmapImage(bool isPlayerOne)
+        private BitmapImage GetBackgroundBitmapImage()
         {
-            return isPlayerOne ?
-                new BitmapImage(new Uri("ms-appx:///Assets/Images/X.png"))
-                : new BitmapImage(new Uri("ms-appx:///Assets/Images/O.png"));
+            return IsPlayerOne ?
+                new BitmapImage(new Uri(GameConstants.PLAYER_ONE_SOURCE))
+                : new BitmapImage(new Uri(GameConstants.PLAYER_TWO_SOURCE));
         }
 
-        private (string, string) GetLineAndColumn(string tag)
+        private (int, int) GetLineAndColumn(string tag)
         {
-            if (string.IsNullOrWhiteSpace(tag)) return ("", "");
+            if (string.IsNullOrWhiteSpace(tag)) return (0, 0);
 
             var lineAndColumn = tag.Split(":");
 
-            return (lineAndColumn[0], lineAndColumn[1]);
+            return (int.Parse(lineAndColumn[0]), int.Parse(lineAndColumn[1]));
+        }
 
+        private void ChangeCurrentPlayer()
+        {
+            IsPlayerOne = !IsPlayerOne;
+        }
+
+        private bool CheckGameIsOver(int line, int column)
+        {
+            _boardGameMatriz[line, column] = IsPlayerOne ? 1 : 2;
+
+
+            for (int i = 0; i < _boardGameMatriz.Rank; i++)
+            {
+                for (int j = 0; j < _boardGameMatriz.GetLength(1); j++)
+                {
+                    if (i == j)
+                    {
+                        if (_boardGameMatriz[i, j] == 1)
+                            _countButtonValue++;
+                        else if (_boardGameMatriz[i, j] == 2)
+                            _countButtonValue--;
+                    }
+                }
+            }
+
+            Debug.WriteLine($"Valor: {_countButtonValue}");
+
+            if (_countButtonValue == 3)
+                Debug.WriteLine($"Player One wins");
+            else if (_countButtonValue == -3)
+                Debug.WriteLine($"Player Two wins");
+
+            return false;
         }
     }
 }

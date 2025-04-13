@@ -125,6 +125,7 @@
     <Compile Include="Controls\TicTacToeBoard.cs" />
     <Compile Include="Controls\TicTacToeBoardButton.cs" />
     <Compile Include="Controls\PlayerCardInfo.cs" />
+    <Compile Include="Events\GameEvents.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CreateAccountPageViewModel.cs" />
     <Compile Include="ViewModels\HomePageViewModel.cs" />
