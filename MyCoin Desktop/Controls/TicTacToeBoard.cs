@@ -6,6 +6,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Media;
 using MyCoin_Desktop.Common;
 using System.Diagnostics;
+using System.Linq;
 
 namespace MyCoin_Desktop.Controls
 {
@@ -37,10 +38,14 @@ namespace MyCoin_Desktop.Controls
 
         #endregion
 
-        private int[,] _boardGameMatriz = new int[3, 3];
+        private string[,] _boardGameMatriz = new string[3, 3] {
+                { "", "", "" },
+                { "", "", "" },
+                { "", "", "" },
+        };
 
-        private int _countButtonValue = 0;
-
+        private string _lineBoard = string.Empty;
+        private string _columnBoard = string.Empty;
 
         public TicTacToeBoard()
         {
@@ -104,29 +109,46 @@ namespace MyCoin_Desktop.Controls
 
         private bool CheckGameIsOver(int line, int column)
         {
-            _boardGameMatriz[line, column] = IsPlayerOne ? 1 : 2;
+            _boardGameMatriz[line, column] = IsPlayerOne ? "X" : "O";
+            _columnBoard = string.Empty;
 
-
-            for (int i = 0; i < _boardGameMatriz.Rank; i++)
+            for (int i = 0; i < _boardGameMatriz.GetLength(0); i++)
             {
                 for (int j = 0; j < _boardGameMatriz.GetLength(1); j++)
                 {
-                    if (i == j)
-                    {
-                        if (_boardGameMatriz[i, j] == 1)
-                            _countButtonValue++;
-                        else if (_boardGameMatriz[i, j] == 2)
-                            _countButtonValue--;
-                    }
+                    if (IsValidPositionOnBoard(i,j))
+                        _lineBoard += _boardGameMatriz[i, j];
+
+                    if (IsValidPositionOnBoard(i, j) && column == j) 
+                        _columnBoard += _boardGameMatriz[i, j];
+
+                    if (CheckIfGameIsOver()) break;
                 }
+                _lineBoard = string.Empty;
             }
 
-            Debug.WriteLine($"Valor: {_countButtonValue}");
+            return false;
+        }
 
-            if (_countButtonValue == 3)
-                Debug.WriteLine($"Player One wins");
-            else if (_countButtonValue == -3)
-                Debug.WriteLine($"Player Two wins");
+        private bool IsValidPositionOnBoard(int line, int column) => !(_boardGameMatriz[line, column].Equals(string.Empty));
+
+        private bool CheckIfLineOrColumnIsCompleted() => _lineBoard.Length == 3 || _columnBoard.Length == 3;
+
+        private bool CheckIfGameIsOver() {
+
+            if (CheckIfLineOrColumnIsCompleted())
+            {
+                if (_lineBoard.Equals("XXX") || _columnBoard.Equals("XXX"))
+                {
+                    Debug.WriteLine("Player 1 wins");
+                    return true;
+                }
+                else if (_lineBoard.Equals("OOO") || _columnBoard.Equals("OOO"))
+                {
+                    Debug.WriteLine("Player 2 wins");
+                    return true;
+                }
+            }
 
             return false;
         }
