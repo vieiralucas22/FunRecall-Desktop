@@ -12,20 +12,6 @@ namespace MyCoin_Desktop.Controls
 {
     public sealed class TicTacToeBoard : Control
     {
-        #region Xaml Components
-
-        private TicTacToeBoardButton _btn1;
-        private TicTacToeBoardButton _btn2;
-        private TicTacToeBoardButton _btn3;
-        private TicTacToeBoardButton _btn4;
-        private TicTacToeBoardButton _btn5;
-        private TicTacToeBoardButton _btn6;
-        private TicTacToeBoardButton _btn7;
-        private TicTacToeBoardButton _btn8;
-        private TicTacToeBoardButton _btn9;
-
-        #endregion
-
         #region Properties
 
         private bool _isPlayerOne = true;
@@ -65,16 +51,6 @@ namespace MyCoin_Desktop.Controls
         {
             base.OnApplyTemplate();
 
-            _btn1 = GetTemplateChild("Btn1") as TicTacToeBoardButton;
-            _btn2 = GetTemplateChild("Btn2") as TicTacToeBoardButton;
-            _btn3 = GetTemplateChild("Btn3") as TicTacToeBoardButton;
-            _btn4 = GetTemplateChild("Btn4") as TicTacToeBoardButton;
-            _btn5 = GetTemplateChild("Btn5") as TicTacToeBoardButton;
-            _btn6 = GetTemplateChild("Btn6") as TicTacToeBoardButton;
-            _btn7 = GetTemplateChild("Btn7") as TicTacToeBoardButton;
-            _btn8 = GetTemplateChild("Btn8") as TicTacToeBoardButton;
-            _btn9 = GetTemplateChild("Btn9") as TicTacToeBoardButton;
-
             for (int i = 1; i <= 9; i++)
             {
                 if (GetTemplateChild($"Btn{i}") is TicTacToeBoardButton btn)
@@ -111,10 +87,7 @@ namespace MyCoin_Desktop.Controls
             return (int.Parse(lineAndColumn[0]), int.Parse(lineAndColumn[1]));
         }
 
-        private void ChangeCurrentPlayer()
-        {
-            IsPlayerOne = !IsPlayerOne;
-        }
+        private void ChangeCurrentPlayer() => IsPlayerOne = !IsPlayerOne;
 
         private bool CheckGameIsOver(int line, int column)
         {
@@ -122,6 +95,8 @@ namespace MyCoin_Desktop.Controls
             _columnBoard = string.Empty;
             _diagnolBoard = string.Empty;
             _inverseDiagnolBoard = string.Empty;
+
+            int spacesToUserTouch = 9;
 
             for (int i = 0; i < _boardGameMatriz.GetLength(0); i++)
             {
@@ -133,17 +108,31 @@ namespace MyCoin_Desktop.Controls
                     if (column == j && IsValidPositionOnBoard(i, j)) 
                         _columnBoard += _boardGameMatriz[i, j];
 
-                    if (IsValidPositionOnBoard(i, j) && i == j)
+                    if (i == j && IsValidPositionOnBoard(i, j))
                         _diagnolBoard += _boardGameMatriz[i, j];
 
-                    if (IsValidPositionOnBoard(i, j) && i+j == 2)
+                    if (i + j == 2 && IsValidPositionOnBoard(i, j))
                         _inverseDiagnolBoard += _boardGameMatriz[i, j];
 
-                    if (CheckIfGameIsOver()) break;
+                    if (CheckIfGameIsOver())
+                    {
+                        DisableAllButtons();
+                        break;
+                    }
+
+                    if (IsValidPositionOnBoard(i, j))
+                    {
+                        spacesToUserTouch--;
+
+                        if (spacesToUserTouch == 0)
+                        {
+                            Debug.WriteLine("Deu Velha");
+                            break;
+                        }
+                    }
                 }
                 _lineBoard = string.Empty;
             }
-
             return false;
         }
 
@@ -170,6 +159,15 @@ namespace MyCoin_Desktop.Controls
             }
 
             return false;
+        }
+
+        private void DisableAllButtons()
+        {
+            for (int i = 1; i <= 9; i++)
+            {
+                if (GetTemplateChild($"Btn{i}") is TicTacToeBoardButton btn)
+                    btn.IsEnabled = false;
+            }
         }
     }
 }
