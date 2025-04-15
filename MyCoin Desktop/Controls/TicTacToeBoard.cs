@@ -38,6 +38,13 @@ namespace MyCoin_Desktop.Controls
 
         #endregion
 
+        #region Constants
+
+        private const string SEQUENCE_TO_PLAYER_ONE_WIN = "XXX";
+        private const string SEQUENCE_TO_PLAYER_TWO_WIN = "OOO";
+
+        #endregion
+
         private string[,] _boardGameMatriz = new string[3, 3] {
                 { "", "", "" },
                 { "", "", "" },
@@ -46,6 +53,8 @@ namespace MyCoin_Desktop.Controls
 
         private string _lineBoard = string.Empty;
         private string _columnBoard = string.Empty;
+        private string _diagnolBoard = string.Empty;
+        private string _inverseDiagnolBoard = string.Empty;
 
         public TicTacToeBoard()
         {
@@ -111,6 +120,8 @@ namespace MyCoin_Desktop.Controls
         {
             _boardGameMatriz[line, column] = IsPlayerOne ? "X" : "O";
             _columnBoard = string.Empty;
+            _diagnolBoard = string.Empty;
+            _inverseDiagnolBoard = string.Empty;
 
             for (int i = 0; i < _boardGameMatriz.GetLength(0); i++)
             {
@@ -119,8 +130,14 @@ namespace MyCoin_Desktop.Controls
                     if (IsValidPositionOnBoard(i,j))
                         _lineBoard += _boardGameMatriz[i, j];
 
-                    if (IsValidPositionOnBoard(i, j) && column == j) 
+                    if (column == j && IsValidPositionOnBoard(i, j)) 
                         _columnBoard += _boardGameMatriz[i, j];
+
+                    if (IsValidPositionOnBoard(i, j) && i == j)
+                        _diagnolBoard += _boardGameMatriz[i, j];
+
+                    if (IsValidPositionOnBoard(i, j) && i+j == 2)
+                        _inverseDiagnolBoard += _boardGameMatriz[i, j];
 
                     if (CheckIfGameIsOver()) break;
                 }
@@ -132,18 +149,20 @@ namespace MyCoin_Desktop.Controls
 
         private bool IsValidPositionOnBoard(int line, int column) => !(_boardGameMatriz[line, column].Equals(string.Empty));
 
-        private bool CheckIfLineOrColumnIsCompleted() => _lineBoard.Length == 3 || _columnBoard.Length == 3;
+        private bool CheckIfLineOrColumnIsCompleted() => _lineBoard.Length == 3 || _columnBoard.Length == 3 || _diagnolBoard.Length == 3 || _inverseDiagnolBoard.Length == 3;
 
         private bool CheckIfGameIsOver() {
 
             if (CheckIfLineOrColumnIsCompleted())
             {
-                if (_lineBoard.Equals("XXX") || _columnBoard.Equals("XXX"))
+                if (_lineBoard.Equals(SEQUENCE_TO_PLAYER_ONE_WIN) || _columnBoard.Equals(SEQUENCE_TO_PLAYER_ONE_WIN) 
+                    || _diagnolBoard.Equals(SEQUENCE_TO_PLAYER_ONE_WIN) || _inverseDiagnolBoard.Equals(SEQUENCE_TO_PLAYER_ONE_WIN))
                 {
                     Debug.WriteLine("Player 1 wins");
                     return true;
                 }
-                else if (_lineBoard.Equals("OOO") || _columnBoard.Equals("OOO"))
+                else if (_lineBoard.Equals(SEQUENCE_TO_PLAYER_TWO_WIN) || _columnBoard.Equals(SEQUENCE_TO_PLAYER_TWO_WIN) 
+                    || _diagnolBoard.Equals(SEQUENCE_TO_PLAYER_TWO_WIN) || _inverseDiagnolBoard.Equals(SEQUENCE_TO_PLAYER_TWO_WIN))
                 {
                     Debug.WriteLine("Player 2 wins");
                     return true;
