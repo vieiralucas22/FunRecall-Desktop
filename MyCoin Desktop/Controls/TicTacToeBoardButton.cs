@@ -30,10 +30,21 @@ namespace MyCoin_Desktop.Controls
             _image = GetTemplateChild("XorOImage") as Image;
         }
 
-        public void SetBackgroundImageButton(BitmapImage source)
+        public void SetBackgroundImageButton(BitmapImage source, bool isPointerEntered)
         {
+            if (!IsEnabled) {
+                if (!isPointerEntered)
+                {
+                    _image.Opacity = 1;
+                }
+                return; 
+            }
+
             _image.Source = source;
             _image.Visibility = Visibility.Visible;
+
+            if (isPointerEntered && IsEnabled)
+                _image.Opacity = 0.5;
         }
     }
 }

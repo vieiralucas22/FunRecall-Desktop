@@ -54,18 +54,35 @@ namespace MyCoin_Desktop.Controls
             for (int i = 1; i <= 9; i++)
             {
                 if (GetTemplateChild($"Btn{i}") is TicTacToeBoardButton btn)
+                {
                     btn.Click += Btn_click;
+                    btn.PointerEntered += Btn_PointerEntered;
+                    btn.PointerExited += Btn_PointerExited; ;
+                }
             }
+        }
+
+        private void Btn_PointerExited(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            if (sender is TicTacToeBoardButton button)
+                button.SetBackgroundImageButton(null, true);
+        }
+
+        private void Btn_PointerEntered(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            if (sender is TicTacToeBoardButton button)
+                button.SetBackgroundImageButton(GetBackgroundBitmapImage(), true);
         }
 
         private void Btn_click(object sender, RoutedEventArgs args)
         {
             var boardButton = sender as TicTacToeBoardButton;
 
+
             var (line, column) = GetLineAndColumn(boardButton.Tag.ToString());
 
-            boardButton.SetBackgroundImageButton(GetBackgroundBitmapImage());
             boardButton.IsEnabled = false;
+            boardButton.SetBackgroundImageButton(GetBackgroundBitmapImage(), false);
 
             CheckGameIsOver(line, column);
             ChangeCurrentPlayer();
@@ -126,7 +143,7 @@ namespace MyCoin_Desktop.Controls
 
                         if (spacesToUserTouch == 0)
                         {
-                            Debug.WriteLine("Deu Velha");
+                            Debug.WriteLine("Has no winner");
                             break;
                         }
                     }
