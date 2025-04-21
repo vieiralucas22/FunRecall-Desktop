@@ -10,5 +10,6 @@ namespace MyCoin_Desktop.Common.Enums
     {
         PLAYER_1 = 0,
         PLAYER_2 = 1,
+        NO_PLAYER = 2,
     }
 }

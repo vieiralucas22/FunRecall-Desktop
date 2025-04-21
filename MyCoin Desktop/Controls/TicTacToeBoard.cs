@@ -7,6 +7,8 @@ using Windows.UI.Xaml.Media;
 using MyCoin_Desktop.Common;
 using System.Diagnostics;
 using System.Linq;
+using MyCoin_Desktop.Events;
+using Microsoft.Practices.ServiceLocation;
 
 namespace MyCoin_Desktop.Controls
 {
@@ -29,6 +31,11 @@ namespace MyCoin_Desktop.Controls
         private const string SEQUENCE_TO_PLAYER_ONE_WIN = "XXX";
         private const string SEQUENCE_TO_PLAYER_TWO_WIN = "OOO";
 
+        #endregion
+
+        #region Event Listeners
+        private IGameEvents _gameEvents;
+        private IGameEvents GameEvents => _gameEvents ?? ServiceLocator.Current.GetInstance<IGameEvents>();
         #endregion
 
         private string[,] _boardGameMatriz = new string[3, 3] {
@@ -119,10 +126,10 @@ namespace MyCoin_Desktop.Controls
             {
                 for (int j = 0; j < _boardGameMatriz.GetLength(1); j++)
                 {
-                    if (IsValidPositionOnBoard(i,j))
+                    if (IsValidPositionOnBoard(i, j))
                         _lineBoard += _boardGameMatriz[i, j];
 
-                    if (column == j && IsValidPositionOnBoard(i, j)) 
+                    if (column == j && IsValidPositionOnBoard(i, j))
                         _columnBoard += _boardGameMatriz[i, j];
 
                     if (i == j && IsValidPositionOnBoard(i, j))
@@ -143,7 +150,7 @@ namespace MyCoin_Desktop.Controls
 
                         if (spacesToUserTouch == 0)
                         {
-                            Debug.WriteLine("Has no winner");
+                            GameEvents.RaiseOnGameIsOverEvent(GameConstants.TIC_TAC_TOE, Players.NO_PLAYER);
                             break;
                         }
                     }
@@ -157,20 +164,21 @@ namespace MyCoin_Desktop.Controls
 
         private bool CheckIfLineOrColumnIsCompleted() => _lineBoard.Length == 3 || _columnBoard.Length == 3 || _diagnolBoard.Length == 3 || _inverseDiagnolBoard.Length == 3;
 
-        private bool CheckIfGameIsOver() {
+        private bool CheckIfGameIsOver()
+        {
 
             if (CheckIfLineOrColumnIsCompleted())
             {
-                if (_lineBoard.Equals(SEQUENCE_TO_PLAYER_ONE_WIN) || _columnBoard.Equals(SEQUENCE_TO_PLAYER_ONE_WIN) 
+                if (_lineBoard.Equals(SEQUENCE_TO_PLAYER_ONE_WIN) || _columnBoard.Equals(SEQUENCE_TO_PLAYER_ONE_WIN)
                     || _diagnolBoard.Equals(SEQUENCE_TO_PLAYER_ONE_WIN) || _inverseDiagnolBoard.Equals(SEQUENCE_TO_PLAYER_ONE_WIN))
                 {
-                    Debug.WriteLine("Player 1 wins");
+                    GameEvents.RaiseOnGameIsOverEvent(GameConstants.TIC_TAC_TOE, Players.PLAYER_1);
                     return true;
                 }
-                else if (_lineBoard.Equals(SEQUENCE_TO_PLAYER_TWO_WIN) || _columnBoard.Equals(SEQUENCE_TO_PLAYER_TWO_WIN) 
+                else if (_lineBoard.Equals(SEQUENCE_TO_PLAYER_TWO_WIN) || _columnBoard.Equals(SEQUENCE_TO_PLAYER_TWO_WIN)
                     || _diagnolBoard.Equals(SEQUENCE_TO_PLAYER_TWO_WIN) || _inverseDiagnolBoard.Equals(SEQUENCE_TO_PLAYER_TWO_WIN))
                 {
-                    Debug.WriteLine("Player 2 wins");
+                    GameEvents.RaiseOnGameIsOverEvent(GameConstants.TIC_TAC_TOE, Players.PLAYER_2);
                     return true;
                 }
             }

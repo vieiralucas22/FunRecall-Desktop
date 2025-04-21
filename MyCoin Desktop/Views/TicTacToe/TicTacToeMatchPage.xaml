@@ -27,6 +27,7 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock d:Text="Player 1 Wins!"
+                   Text="{x:Bind ViewModel.GameResult, Mode=OneWay}"
                    FontSize="50"
                    Grid.ColumnSpan="3"
                    HorizontalAlignment="Center"

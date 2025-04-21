@@ -12,5 +12,12 @@ namespace MyCoin_Desktop.Common
         public const string PLAYER_TWO = "Player 2";
         public const string PLAYER_ONE_SOURCE = "ms-appx:///Assets/Images/X.png";
         public const string PLAYER_TWO_SOURCE = "ms-appx:///Assets/Images/O.png";
+
+        #region Games
+        public const string TIC_TAC_TOE = "TicTacToe";
+        public const string HANGMAN = "Hangman";
+        public const string CHECKERS = "Checkers";
+        public const string WHAT_IS_MY_NUMBER = "WhatIsMyNumber";
+        #endregion
     }
 }

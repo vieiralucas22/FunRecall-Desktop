@@ -1,4 +1,5 @@
 ﻿using MyCoin_Desktop.Common;
+using MyCoin_Desktop.Events;
 using Prism.Unity.Windows;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Activation;
@@ -18,6 +19,11 @@ namespace MyCoin_Desktop
             NavigationService.Navigate(PageTokens.HOME, null);
             return Task.CompletedTask;
         }
-       
+
+        protected override void ConfigureContainer()
+        {
+            base.ConfigureContainer();
+            RegisterTypeIfMissing(typeof(IGameEvents), typeof(GameEvents), true);
+        }
     }
 }
