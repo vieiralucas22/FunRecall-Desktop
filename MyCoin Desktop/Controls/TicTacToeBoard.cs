@@ -5,10 +5,11 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Media;
 using MyCoin_Desktop.Common;
-using System.Diagnostics;
 using System.Linq;
 using MyCoin_Desktop.Events;
 using Microsoft.Practices.ServiceLocation;
+using System.Collections.Generic;
+using Windows.UI;
 
 namespace MyCoin_Desktop.Controls
 {
@@ -120,8 +121,6 @@ namespace MyCoin_Desktop.Controls
             _diagnolBoard = string.Empty;
             _inverseDiagnolBoard = string.Empty;
 
-            int spacesToUserTouch = 9;
-
             for (int i = 0; i < _boardGameMatriz.GetLength(0); i++)
             {
                 for (int j = 0; j < _boardGameMatriz.GetLength(1); j++)
@@ -139,20 +138,13 @@ namespace MyCoin_Desktop.Controls
                         _inverseDiagnolBoard += _boardGameMatriz[i, j];
 
                     if (CheckIfGameIsOver())
+                        break;
+
+                    if (HasNoWinner())
                     {
                         DisableAllButtons();
+                        GameEvents.RaiseOnGameIsOverEvent(GameConstants.TIC_TAC_TOE, Players.NO_PLAYER);
                         break;
-                    }
-
-                    if (IsValidPositionOnBoard(i, j))
-                    {
-                        spacesToUserTouch--;
-
-                        if (spacesToUserTouch == 0)
-                        {
-                            GameEvents.RaiseOnGameIsOverEvent(GameConstants.TIC_TAC_TOE, Players.NO_PLAYER);
-                            break;
-                        }
                     }
                 }
                 _lineBoard = string.Empty;
@@ -166,18 +158,19 @@ namespace MyCoin_Desktop.Controls
 
         private bool CheckIfGameIsOver()
         {
-
             if (CheckIfLineOrColumnIsCompleted())
             {
                 if (_lineBoard.Equals(SEQUENCE_TO_PLAYER_ONE_WIN) || _columnBoard.Equals(SEQUENCE_TO_PLAYER_ONE_WIN)
                     || _diagnolBoard.Equals(SEQUENCE_TO_PLAYER_ONE_WIN) || _inverseDiagnolBoard.Equals(SEQUENCE_TO_PLAYER_ONE_WIN))
                 {
+                    SetBoardOnWinnerSpacesOnBoard(GetWinningPositions());
                     GameEvents.RaiseOnGameIsOverEvent(GameConstants.TIC_TAC_TOE, Players.PLAYER_1);
                     return true;
                 }
                 else if (_lineBoard.Equals(SEQUENCE_TO_PLAYER_TWO_WIN) || _columnBoard.Equals(SEQUENCE_TO_PLAYER_TWO_WIN)
                     || _diagnolBoard.Equals(SEQUENCE_TO_PLAYER_TWO_WIN) || _inverseDiagnolBoard.Equals(SEQUENCE_TO_PLAYER_TWO_WIN))
                 {
+                    SetBoardOnWinnerSpacesOnBoard(GetWinningPositions());
                     GameEvents.RaiseOnGameIsOverEvent(GameConstants.TIC_TAC_TOE, Players.PLAYER_2);
                     return true;
                 }
@@ -191,8 +184,60 @@ namespace MyCoin_Desktop.Controls
             for (int i = 1; i <= 9; i++)
             {
                 if (GetTemplateChild($"Btn{i}") is TicTacToeBoardButton btn)
+                {
                     btn.IsEnabled = false;
+                    btn.Click -= Btn_click;
+                    btn.PointerEntered -= Btn_PointerEntered;
+                    btn.PointerExited -= Btn_PointerExited; ;
+                }
             }
         }
+
+        private void SetBoardOnWinnerSpacesOnBoard(List<(int, int)> list)
+        {
+            DisableAllButtons();
+            for (int i = 1; i <= 9; i++)
+            {
+                if (GetTemplateChild($"Btn{i}") is TicTacToeBoardButton btn)
+                {
+                    var (line, column) = GetLineAndColumn(btn.Tag.ToString());
+
+                    list.ForEach(position =>
+                    {
+                        if (position.Item1 == line && position.Item2 == column)
+                            btn.SetBtnWithWinnerStyle();
+                    });
+                }
+            }
+        }
+
+        private List<(int, int)> GetWinningPositions()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                if (!_boardGameMatriz[i, 0].Equals(string.Empty) &&
+                    _boardGameMatriz[i, 0].Equals(_boardGameMatriz[i, 1]) &&
+                    _boardGameMatriz[i, 1].Equals(_boardGameMatriz[i, 2]))
+                    return new List<(int, int)> { (i, 0), (i, 1), (i, 2) };
+            }
+
+            for (int j = 0; j < 3; j++)
+            {
+                if (!_boardGameMatriz[0, j].Equals(string.Empty) &&
+                    _boardGameMatriz[0, j].Equals(_boardGameMatriz[1, j]) &&
+                    _boardGameMatriz[1, j].Equals(_boardGameMatriz[2, j]))
+                    return new List<(int, int)> { (0, j), (1, j), (2, j) };
+            }
+
+            if (_diagnolBoard.Length == 3 && (_diagnolBoard.Equals(SEQUENCE_TO_PLAYER_ONE_WIN) || _diagnolBoard.Equals(SEQUENCE_TO_PLAYER_TWO_WIN)))
+                return new List<(int, int)> { (0, 0), (1, 1), (2, 2) };
+
+            if (_inverseDiagnolBoard.Length == 3 && (_inverseDiagnolBoard.Equals(SEQUENCE_TO_PLAYER_ONE_WIN) || _inverseDiagnolBoard.Equals(SEQUENCE_TO_PLAYER_TWO_WIN)))
+                return new List<(int, int)> { (0, 2), (1, 1), (2, 0) };
+
+            return new List<(int, int)>();
+        }
+
+        private bool HasNoWinner() => !_boardGameMatriz.Cast<string>().Contains(string.Empty);
     }
 }

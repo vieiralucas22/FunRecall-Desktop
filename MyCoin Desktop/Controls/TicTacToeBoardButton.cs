@@ -15,12 +15,13 @@ namespace MyCoin_Desktop.Controls
 {
     public sealed class TicTacToeBoardButton : Button
     {
+        private const string WINNER_STATE = "BtnWinnerState";
 
         private Image _image;
+
         public TicTacToeBoardButton()
         {
             DefaultStyleKey = typeof(TicTacToeBoardButton);
-
         }
 
         protected override void OnApplyTemplate()
@@ -46,5 +47,11 @@ namespace MyCoin_Desktop.Controls
             if (isPointerEntered && IsEnabled)
                 _image.Opacity = 0.5;
         }
+
+        public void SetBtnWithWinnerStyle()
+        {
+           VisualStateManager.GoToState(this, WINNER_STATE, false);
+        }
+
     }
 }

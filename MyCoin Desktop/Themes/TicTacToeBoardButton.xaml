@@ -26,12 +26,17 @@
                                                 Value="4" />
                                     </VisualState.Setters>
                                 </VisualState>
-                                <VisualState x:Name="Disabled">
+                                <VisualState x:Name="Disabled"/>
+
+                                <VisualState x:Name="BtnWinnerState">
                                     <VisualState.Setters>
-                                        <Setter Target="RootGrid.Background"
-                                                Value="#8e7afd" />
+                                        <Setter Target="RootGrid.BorderBrush"
+                                                Value="LightGreen" />
+                                        <Setter Target="RootGrid.BorderThickness"
+                                                Value="4" />
                                     </VisualState.Setters>
                                 </VisualState>
+
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
 
