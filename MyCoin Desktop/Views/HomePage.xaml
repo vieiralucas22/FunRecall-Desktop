@@ -17,11 +17,11 @@
                                          Content="Jogo da velha"
                                          Tag="TicTacToe" />
                 <muxc:NavigationViewItem Icon="ProtectedDocument"
+                                         Content="Xadrez"
+                                         Tag="Chess" />
+                <muxc:NavigationViewItem Icon="ProtectedDocument"
                                          Content="Jogo da forca"
                                          Tag="CreateAccount" />
-                <muxc:NavigationViewItem Icon="ProtectedDocument"
-                                         Content="Dama"
-                                         Tag="Checkers" />
                 <muxc:NavigationViewItem Icon="ProtectedDocument"
                                          Content="Qual meu número"
                                          Tag="WhatIsMyNumber" />

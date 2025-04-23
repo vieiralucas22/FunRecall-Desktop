@@ -127,11 +127,15 @@
     <Compile Include="Controls\PlayerCardInfo.cs" />
     <Compile Include="Events\GameEvents.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Chess\ChessMenuPageViewModel.cs" />
     <Compile Include="ViewModels\CreateAccountPageViewModel.cs" />
     <Compile Include="ViewModels\HomePageViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\TicTacToe\TicTacToeMatchPageViewModel.cs" />
     <Compile Include="ViewModels\TicTacToe\TicTacToePageViewModel.cs" />
+    <Compile Include="Views\Chess\ChessMenuPage.xaml.cs">
+      <DependentUpon>ChessMenuPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CreateAccountPage.xaml.cs">
       <DependentUpon>CreateAccountPage.xaml</DependentUpon>
     </Compile>
@@ -197,6 +201,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\PlayerCardInfoStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Chess\ChessMenuPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

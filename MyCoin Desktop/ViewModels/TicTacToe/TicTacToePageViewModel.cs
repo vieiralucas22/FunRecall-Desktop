@@ -15,7 +15,7 @@ namespace MyCoin_Desktop.ViewModels
 
         public void GoToMatchPage()
         {
-           navigationService.Navigate(PageTokens.TIC_TAC_TOE_MATCH_PAGE, null);
+            navigationService.Navigate(PageTokens.TIC_TAC_TOE_MATCH_PAGE, null);
         }
     }
 }

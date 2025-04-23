@@ -16,7 +16,7 @@ namespace MyCoin_Desktop.Common
         #region Games
         public const string TIC_TAC_TOE = "TicTacToe";
         public const string HANGMAN = "Hangman";
-        public const string CHECKERS = "Checkers";
+        public const string CHESS = "Chess";
         public const string WHAT_IS_MY_NUMBER = "WhatIsMyNumber";
         #endregion
     }

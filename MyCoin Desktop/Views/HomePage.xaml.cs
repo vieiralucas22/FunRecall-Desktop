@@ -4,6 +4,7 @@ using Windows.UI.Xaml.Controls;
 using NavigationView = Microsoft.UI.Xaml.Controls.NavigationView;
 using NavigationViewSelectionChangedEventArgs = Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs;
 using NavigationViewItem = Microsoft.UI.Xaml.Controls.NavigationViewItem;
+using MyCoin_Desktop.Views.Chess;
 
 
 namespace MyCoin_Desktop.Views
@@ -13,7 +14,7 @@ namespace MyCoin_Desktop.Views
         public HomePage()
         {
             InitializeComponent();
-            contentFrame.Navigate(typeof(TicTacToeMatchPage));
+            contentFrame.Navigate(typeof(TicTacToePage));
         }
 
         public void NvSample_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -25,14 +26,12 @@ namespace MyCoin_Desktop.Views
                     case PageTokens.TIC_TAC_TOE_PAGE:
                         contentFrame.Navigate(typeof(TicTacToePage));
                         break;
+                    case PageTokens.CHESS:
+                        contentFrame.Navigate(typeof(ChessMenuPage));
+                        break;
                     case PageTokens.HANGMAN_PAGE:
                       //  contentFrame.Navigate(typeof(SamplePage2));
                         break;
-
-                    case PageTokens.CHECKERS:
-                       // contentFrame.Navigate(typeof(SamplePage2));
-                        break;
-
                     case PageTokens.WHAT_IS_MY_NUMBER:
                        // contentFrame.Navigate(typeof(SamplePage2));
                         break;
