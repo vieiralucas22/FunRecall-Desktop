@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
@@ -15,8 +16,6 @@ namespace MyCoin_Desktop.Controls
 {
     public sealed class TicTacToeBoardButton : Button
     {
-        private const string WINNER_STATE = "BtnWinnerState";
-
         private Image _image;
 
         public TicTacToeBoardButton()
@@ -50,7 +49,8 @@ namespace MyCoin_Desktop.Controls
 
         public void SetBtnWithWinnerStyle()
         {
-           VisualStateManager.GoToState(this, WINNER_STATE, false);
+            BorderBrush = new SolidColorBrush(Colors.LightGreen);
+            BorderThickness = new Thickness(4);
         }
 
     }

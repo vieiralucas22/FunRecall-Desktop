@@ -140,8 +140,19 @@ namespace MyCoin_Desktop.Controls
                     if (CheckIfGameIsOver())
                         break;
 
-                    if (HasNoWinner())
+                    if (HasNoSpacesOnBoard())
                     {
+                        List<(int, int)> winnerPosition = GetWinningPositions();
+
+                        if (winnerPosition.Count != 0)
+                        {
+                            var firstPosition = winnerPosition.FirstOrDefault();
+                            bool isPlayerOneWinner = _boardGameMatriz[firstPosition.Item1, firstPosition.Item2].Equals("X");
+                            SetBoardOnWinnerSpacesOnBoard(winnerPosition);
+                            GameEvents.RaiseOnGameIsOverEvent(GameConstants.TIC_TAC_TOE, isPlayerOneWinner ? Players.PLAYER_1 : Players.PLAYER_2);
+                            break;
+                        }
+
                         DisableAllButtons();
                         GameEvents.RaiseOnGameIsOverEvent(GameConstants.TIC_TAC_TOE, Players.NO_PLAYER);
                         break;
@@ -213,12 +224,18 @@ namespace MyCoin_Desktop.Controls
 
         private List<(int, int)> GetWinningPositions()
         {
+            List<(int, int)> winnerPosition = new List<(int, int)>();
+
             for (int i = 0; i < 3; i++)
             {
                 if (!_boardGameMatriz[i, 0].Equals(string.Empty) &&
                     _boardGameMatriz[i, 0].Equals(_boardGameMatriz[i, 1]) &&
                     _boardGameMatriz[i, 1].Equals(_boardGameMatriz[i, 2]))
-                    return new List<(int, int)> { (i, 0), (i, 1), (i, 2) };
+                {
+                    winnerPosition.Add((i, 0));
+                    winnerPosition.Add((i, 1));
+                    winnerPosition.Add((i, 2));
+                }
             }
 
             for (int j = 0; j < 3; j++)
@@ -226,18 +243,30 @@ namespace MyCoin_Desktop.Controls
                 if (!_boardGameMatriz[0, j].Equals(string.Empty) &&
                     _boardGameMatriz[0, j].Equals(_boardGameMatriz[1, j]) &&
                     _boardGameMatriz[1, j].Equals(_boardGameMatriz[2, j]))
-                    return new List<(int, int)> { (0, j), (1, j), (2, j) };
+                {
+                    winnerPosition.Add((0, j));
+                    winnerPosition.Add((1, j));
+                    winnerPosition.Add((2, j));
+                }
             }
 
             if (_diagnolBoard.Length == 3 && (_diagnolBoard.Equals(SEQUENCE_TO_PLAYER_ONE_WIN) || _diagnolBoard.Equals(SEQUENCE_TO_PLAYER_TWO_WIN)))
-                return new List<(int, int)> { (0, 0), (1, 1), (2, 2) };
+            {
+                winnerPosition.Add((0, 0));
+                winnerPosition.Add((1, 1));
+                winnerPosition.Add((2, 2));
+            }
 
             if (_inverseDiagnolBoard.Length == 3 && (_inverseDiagnolBoard.Equals(SEQUENCE_TO_PLAYER_ONE_WIN) || _inverseDiagnolBoard.Equals(SEQUENCE_TO_PLAYER_TWO_WIN)))
-                return new List<(int, int)> { (0, 2), (1, 1), (2, 0) };
+            {
+                winnerPosition.Add((0, 2));
+                winnerPosition.Add((1, 1));
+                winnerPosition.Add((2, 0));
+            }
 
-            return new List<(int, int)>();
+            return winnerPosition;
         }
 
-        private bool HasNoWinner() => !_boardGameMatriz.Cast<string>().Contains(string.Empty);
+        private bool HasNoSpacesOnBoard() => !_boardGameMatriz.Cast<string>().Contains(string.Empty);
     }
 }
