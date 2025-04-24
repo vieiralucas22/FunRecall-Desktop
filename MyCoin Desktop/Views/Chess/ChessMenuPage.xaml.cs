@@ -1,7 +1,7 @@
-﻿using MyCoin_Desktop.ViewModels.Chess;
+﻿using MyCoin_Desktop.ViewModels;
 using Windows.UI.Xaml.Controls;
 
-namespace MyCoin_Desktop.Views.Chess
+namespace MyCoin_Desktop.Views
 {
     public sealed partial class ChessMenuPage : Page
     {

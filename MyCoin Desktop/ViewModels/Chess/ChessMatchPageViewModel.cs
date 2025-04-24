@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyCoin_Desktop.ViewModels.Chess
 {
-    internal class ChessMatchPageViewModel
+    public class ChessMatchPageViewModel
     {
     }
 }

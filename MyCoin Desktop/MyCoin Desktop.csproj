@@ -122,17 +122,23 @@
     <Compile Include="Common\Enums\Players.cs" />
     <Compile Include="Common\GameConstants.cs" />
     <Compile Include="Common\PageTokens.cs" />
+    <Compile Include="Controls\ChessBoard.cs" />
+    <Compile Include="Controls\ChessBoardButton.cs" />
     <Compile Include="Controls\TicTacToeBoard.cs" />
     <Compile Include="Controls\TicTacToeBoardButton.cs" />
     <Compile Include="Controls\PlayerCardInfo.cs" />
     <Compile Include="Events\GameEvents.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Chess\ChessMatchPageViewModel.cs" />
     <Compile Include="ViewModels\Chess\ChessMenuPageViewModel.cs" />
     <Compile Include="ViewModels\CreateAccountPageViewModel.cs" />
     <Compile Include="ViewModels\HomePageViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\TicTacToe\TicTacToeMatchPageViewModel.cs" />
     <Compile Include="ViewModels\TicTacToe\TicTacToePageViewModel.cs" />
+    <Compile Include="Views\Chess\ChessMatchPage.xaml.cs">
+      <DependentUpon>ChessMatchPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Chess\ChessMenuPage.xaml.cs">
       <DependentUpon>ChessMenuPage.xaml</DependentUpon>
     </Compile>
@@ -169,6 +175,18 @@
     <Content Include="Assets\Images\Avatar8.jpeg" />
     <Content Include="Assets\Images\Avatar9.png" />
     <Content Include="Assets\Images\background.jpeg" />
+    <Content Include="Assets\Images\Chess\BishopBlack.png" />
+    <Content Include="Assets\Images\Chess\BishopWhite.png" />
+    <Content Include="Assets\Images\Chess\KingBlack.png" />
+    <Content Include="Assets\Images\Chess\KingWhite.png" />
+    <Content Include="Assets\Images\Chess\KnightBlack.png" />
+    <Content Include="Assets\Images\Chess\KnightWhite.png" />
+    <Content Include="Assets\Images\Chess\PawnBlack.png" />
+    <Content Include="Assets\Images\Chess\PawnWhite.png" />
+    <Content Include="Assets\Images\Chess\QueenBlack.png" />
+    <Content Include="Assets\Images\Chess\QueenWhite.png" />
+    <Content Include="Assets\Images\Chess\RookBlack.png" />
+    <Content Include="Assets\Images\Chess\RookWhite.png" />
     <Content Include="Assets\Images\EtCoin_logo.png" />
     <Content Include="Assets\Images\games_background.jpg" />
     <Content Include="Assets\Images\games_match_background.jpg" />
@@ -188,6 +206,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Themes\ChessStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -201,6 +223,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\PlayerCardInfoStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Chess\ChessMatchPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

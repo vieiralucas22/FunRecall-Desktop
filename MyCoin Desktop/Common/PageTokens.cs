@@ -14,6 +14,7 @@ namespace MyCoin_Desktop.Common
         public const string TIC_TAC_TOE_MATCH_PAGE = "TicTacToeMatch";
         public const string HANGMAN_PAGE = "Hangman";
         public const string CHESS = "Chess";
+        public const string CHESS_MATCH_PAGE = "ChessMatch";
         public const string WHAT_IS_MY_NUMBER = "WhatIsMyNumber";
         public const string HOME = "Home";
 

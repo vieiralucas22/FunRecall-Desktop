@@ -1,0 +1,350 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:MyCoin_Desktop.Controls">
+
+    <Style TargetType="controls:ChessBoardButton"
+           xmlns:local2="using:MyCoin_Desktop.Controls">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:ChessBoardButton">
+                    <Border Background="{TemplateBinding Background}">
+                        <Image Source="{TemplateBinding ImageSource}" Stretch="Uniform"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="controls:ChessBoard"
+           xmlns:local2="using:MyCoin_Desktop.Controls">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:ChessBoard">
+                    <Grid x:Name="ChessBoardGrid"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          BorderBrush="Black"
+                          BorderThickness="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80" />
+                            <RowDefinition Height="80" />
+                            <RowDefinition Height="80" />
+                            <RowDefinition Height="80" />
+                            <RowDefinition Height="80" />
+                            <RowDefinition Height="80" />
+                            <RowDefinition Height="80" />
+                            <RowDefinition Height="80" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80" />
+                            <ColumnDefinition Width="80" />
+                            <ColumnDefinition Width="80" />
+                            <ColumnDefinition Width="80" />
+                            <ColumnDefinition Width="80" />
+                            <ColumnDefinition Width="80" />
+                            <ColumnDefinition Width="80" />
+                            <ColumnDefinition Width="80" />
+                        </Grid.ColumnDefinitions>
+
+                        <!--Line 0-->
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Row="0"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/RookBlack.png" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="1"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/KnightBlack.png" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Column="2"
+                                                   Grid.Row="0"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/BishopBlack.png" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="3"
+                                                   Grid.Row="0"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/KingBlack.png" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Column="4"
+                                                   Grid.Row="0"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/QueenBlack.png" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="5"
+                                                   Grid.Row="0"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/BishopBlack.png" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Column="6"
+                                                   Grid.Row="0"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/KnightBlack.png" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="7"
+                                                   Grid.Row="0"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/RookBlack.png" />
+                        <!--Line 1-->
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="0"
+                                                   Grid.Row="1"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/PawnBlack.png" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Row="1"
+                                                   Grid.Column="1"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/PawnBlack.png" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Row="1"
+                                                   Grid.Column="2"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/PawnBlack.png" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Column="3"
+                                                   Grid.Row="1"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/PawnBlack.png" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="4"
+                                                   Grid.Row="1"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/PawnBlack.png" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Column="5"
+                                                   Grid.Row="1"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/PawnBlack.png" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="6"
+                                                   Grid.Row="1"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/PawnBlack.png" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Column="7"
+                                                   Grid.Row="1"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/PawnBlack.png" />
+
+                        <!--Line 2-->
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Row="2" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="1"
+                                                   Grid.Row="2" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Column="2"
+                                                   Grid.Row="2" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="3"
+                                                   Grid.Row="2" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Column="4"
+                                                   Grid.Row="2" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="5"
+                                                   Grid.Row="2" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Column="6"
+                                                   Grid.Row="2" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="7"
+                                                   Grid.Row="2" />
+
+                        <!--Line 3-->
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="0"
+                                                   Grid.Row="3" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Column="1"
+                                                   Grid.Row="3" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="2"
+                                                   Grid.Row="3" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Row="3"
+                                                   Grid.Column="3" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Row="3"
+                                                   Grid.Column="4" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Column="5"
+                                                   Grid.Row="3" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="6"
+                                                   Grid.Row="3" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Column="7"
+                                                   Grid.Row="3" />
+
+                        <!--Line 4-->
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Row="4" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="1"
+                                                   Grid.Row="4" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Column="2"
+                                                   Grid.Row="4" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="3"
+                                                   Grid.Row="4" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Column="4"
+                                                   Grid.Row="4" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="5"
+                                                   Grid.Row="4" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Column="6"
+                                                   Grid.Row="4" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="7"
+                                                   Grid.Row="4" />
+
+                        <!--Line 5-->
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="0"
+                                                   Grid.Row="5" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Column="1"
+                                                   Grid.Row="5" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="2"
+                                                   Grid.Row="5" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Row="5"
+                                                   Grid.Column="3" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Row="5"
+                                                   Grid.Column="4" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Column="5"
+                                                   Grid.Row="5" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="6"
+                                                   Grid.Row="5" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Column="7"
+                                                   Grid.Row="5" />
+
+                        <!--Line 6-->
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Column="0"
+                                                   Grid.Row="6"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/PawnWhite.png" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Row="6"
+                                                   Grid.Column="1"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/PawnWhite.png" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Row="6"
+                                                   Grid.Column="2"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/PawnWhite.png" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="3"
+                                                   Grid.Row="6"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/PawnWhite.png" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Column="4"
+                                                   Grid.Row="6"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/PawnWhite.png" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="5"
+                                                   Grid.Row="6"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/PawnWhite.png" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Column="6"
+                                                   Grid.Row="6"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/PawnWhite.png" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="7"
+                                                   Grid.Row="6"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/PawnWhite.png" />
+
+                        <!--Line 7-->
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Row="7"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/RookWhite.png" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Column="1"
+                                                   Grid.Row="7"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/KnightWhite.png" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="2"
+                                                   Grid.Row="7"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/BishopWhite.png" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Column="3"
+                                                   Grid.Row="7"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/KingWhite.png" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="4"
+                                                   Grid.Row="7"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/QueenWhite.png" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Column="5"
+                                                   Grid.Row="7"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/BishopWhite.png" />
+
+                        <controls:ChessBoardButton Background="#8c78fd"
+                                                   Grid.Column="6"
+                                                   Grid.Row="7"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/KnightWhite.png" />
+
+                        <controls:ChessBoardButton Background="#fdfefb"
+                                                   Grid.Column="7"
+                                                   Grid.Row="7"
+                                                   ImagePath="ms-appx:///Assets/Images/Chess/RookWhite.png" />
+
+
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

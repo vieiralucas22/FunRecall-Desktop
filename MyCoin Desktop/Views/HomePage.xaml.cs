@@ -4,7 +4,7 @@ using Windows.UI.Xaml.Controls;
 using NavigationView = Microsoft.UI.Xaml.Controls.NavigationView;
 using NavigationViewSelectionChangedEventArgs = Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs;
 using NavigationViewItem = Microsoft.UI.Xaml.Controls.NavigationViewItem;
-using MyCoin_Desktop.Views.Chess;
+using MyCoin_Desktop.Views;
 
 
 namespace MyCoin_Desktop.Views

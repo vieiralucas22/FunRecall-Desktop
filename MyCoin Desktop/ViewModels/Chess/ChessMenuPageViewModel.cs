@@ -1,4 +1,5 @@
-﻿using Prism.Windows.Mvvm;
+﻿using MyCoin_Desktop.Common;
+using Prism.Windows.Mvvm;
 using Prism.Windows.Navigation;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyCoin_Desktop.ViewModels.Chess
+namespace MyCoin_Desktop.ViewModels
 {
     public class ChessMenuPageViewModel : ViewModelBase
     {
@@ -19,7 +20,7 @@ namespace MyCoin_Desktop.ViewModels.Chess
 
         public void GoToMatchPage()
         {
-           // navigationService.Navigate();
+            navigationService.Navigate(PageTokens.CHESS_MATCH_PAGE, null);
         }
     }
 }
