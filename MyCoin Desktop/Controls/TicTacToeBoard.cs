@@ -10,6 +10,7 @@ using MyCoin_Desktop.Events;
 using Microsoft.Practices.ServiceLocation;
 using System.Collections.Generic;
 using Windows.UI;
+using MyCoin_Desktop.Util;
 
 namespace MyCoin_Desktop.Controls
 {
@@ -87,7 +88,7 @@ namespace MyCoin_Desktop.Controls
             var boardButton = sender as TicTacToeBoardButton;
 
 
-            var (line, column) = GetLineAndColumn(boardButton.Tag.ToString());
+            var (line, column) = GameBoardUtil.GetLineAndColumn(boardButton.Tag.ToString());
 
             boardButton.IsEnabled = false;
             boardButton.SetBackgroundImageButton(GetBackgroundBitmapImage(), false);
@@ -97,19 +98,10 @@ namespace MyCoin_Desktop.Controls
         }
 
         private BitmapImage GetBackgroundBitmapImage()
-        {
+        { 
             return IsPlayerOne ?
                 new BitmapImage(new Uri(GameConstants.PLAYER_ONE_SOURCE))
                 : new BitmapImage(new Uri(GameConstants.PLAYER_TWO_SOURCE));
-        }
-
-        private (int, int) GetLineAndColumn(string tag)
-        {
-            if (string.IsNullOrWhiteSpace(tag)) return (0, 0);
-
-            var lineAndColumn = tag.Split(":");
-
-            return (int.Parse(lineAndColumn[0]), int.Parse(lineAndColumn[1]));
         }
 
         private void ChangeCurrentPlayer() => IsPlayerOne = !IsPlayerOne;
@@ -211,7 +203,7 @@ namespace MyCoin_Desktop.Controls
             {
                 if (GetTemplateChild($"Btn{i}") is TicTacToeBoardButton btn)
                 {
-                    var (line, column) = GetLineAndColumn(btn.Tag.ToString());
+                    var (line, column) = GameBoardUtil.GetLineAndColumn(btn.Tag.ToString());
 
                     list.ForEach(position =>
                     {

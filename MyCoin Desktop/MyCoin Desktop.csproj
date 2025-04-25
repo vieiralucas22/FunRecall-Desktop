@@ -119,6 +119,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\Enums\ChessPieces.cs" />
+    <Compile Include="Common\Enums\ChessPiecesColors.cs" />
     <Compile Include="Common\Enums\Players.cs" />
     <Compile Include="Common\GameConstants.cs" />
     <Compile Include="Common\PageTokens.cs" />
@@ -127,8 +129,17 @@
     <Compile Include="Controls\TicTacToeBoard.cs" />
     <Compile Include="Controls\TicTacToeBoardButton.cs" />
     <Compile Include="Controls\PlayerCardInfo.cs" />
+    <Compile Include="Entities\Bishop.cs" />
+    <Compile Include="Entities\King.cs" />
+    <Compile Include="Entities\Knight.cs" />
+    <Compile Include="Entities\Pawn.cs" />
+    <Compile Include="Entities\Piece.cs" />
+    <Compile Include="Entities\Queen.cs" />
+    <Compile Include="Entities\Rook.cs" />
     <Compile Include="Events\GameEvents.cs" />
+    <Compile Include="Extensions\EnumExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\GameBoardUtil.cs" />
     <Compile Include="ViewModels\Chess\ChessMatchPageViewModel.cs" />
     <Compile Include="ViewModels\Chess\ChessMenuPageViewModel.cs" />
     <Compile Include="ViewModels\CreateAccountPageViewModel.cs" />

@@ -1,8 +1,14 @@
-﻿using System;
+﻿using MyCoin_Desktop.Common;
+using MyCoin_Desktop.Common.Enums;
+using MyCoin_Desktop.Entities;
+using MyCoin_Desktop.Extensions;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text.RegularExpressions;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
@@ -36,7 +42,7 @@ namespace MyCoin_Desktop.Controls
         }
 
         public static readonly DependencyProperty ImageSourceProperty =
-            DependencyProperty.Register(nameof(ImageSource), typeof(BitmapImage), typeof(ChessBoardButton),new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(ImageSource), typeof(BitmapImage), typeof(ChessBoardButton), new PropertyMetadata(null));
 
         private static void OnImagePathChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -52,6 +58,48 @@ namespace MyCoin_Desktop.Controls
         public ChessBoardButton()
         {
             DefaultStyleKey = typeof(ChessBoardButton);
+        }
+
+        public Piece GetPiece()
+        {
+            var piece = Path.GetFileNameWithoutExtension(ImagePath);
+            Piece chessPiece = null;
+
+            if (!string.IsNullOrEmpty(piece))
+            {
+                string[] result = Regex.Split(piece, @"(?=[A-Z])");
+
+                ChessPiecesColors pieceColor = result[2].Equals(ChessPiecesColors.WHITE.GetDescription()) ? ChessPiecesColors.WHITE : ChessPiecesColors.BLACK;
+                
+                switch (result[1])
+                {
+                    case GameConstants.PAWN:
+                        chessPiece = new Pawn(pieceColor);
+                        break;
+
+                    case GameConstants.ROOK:
+                        chessPiece = new Rook(pieceColor);
+                        break;
+
+                    case GameConstants.KNIGHT:
+                        chessPiece = new Knight(pieceColor);
+                        break;
+
+                    case GameConstants.BISHOP:
+                        chessPiece = new Bishop(pieceColor);
+                        break;
+
+                    case GameConstants.QUEEN:
+                        chessPiece = new Queen(pieceColor);
+                        break;
+
+                    case GameConstants.KING:
+                        chessPiece = new King(pieceColor);
+                        break;
+                }
+            }
+
+            return chessPiece;
         }
     }
 }
