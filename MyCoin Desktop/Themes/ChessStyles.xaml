@@ -7,8 +7,48 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:ChessBoardButton">
-                    <Border Background="{TemplateBinding Background}">
-                        <Image Source="{TemplateBinding ImageSource}" Stretch="Uniform"/>
+                    <Border x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+
+                        <VisualStateManager.VisualStateGroups>
+
+                            <VisualStateGroup>
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="PointerOver" />
+                                <VisualState x:Name="Pressed" />
+                                <VisualState x:Name="Disabled" />
+                            </VisualStateGroup>
+
+                            <VisualStateGroup x:Name="Other">
+
+                                <VisualState x:Name="NoSelected">
+                                    <VisualState.Setters>
+                                        <Setter Target="Border.BorderThickness"
+                                                Value="0" />
+                                    </VisualState.Setters>
+                                </VisualState>
+
+                                <VisualState x:Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Target="Border.BorderThickness"
+                                                Value="4" />
+                                        <Setter Target="Border.BorderBrush"
+                                                Value="#1c881b" />
+                                        <Setter Target="Grid.Background"
+                                                Value="#8090ee90" />
+                                    </VisualState.Setters>
+                                </VisualState>
+
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid x:Name="Grid">
+
+                            <Image Source="{TemplateBinding ImageSource}"
+                               Stretch="Uniform" />
+                        </Grid>
+
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
