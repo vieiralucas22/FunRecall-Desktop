@@ -52,8 +52,15 @@ namespace MyCoin_Desktop.Controls
             }
         }
 
-
         #endregion
+
+        private Piece _buttonPiece;
+
+        public Piece ButtonPiece
+        {
+            get { return _buttonPiece; }
+            set { _buttonPiece = value; }
+        }
 
         public ChessBoardButton()
         {
@@ -63,7 +70,6 @@ namespace MyCoin_Desktop.Controls
         public Piece GetPiece()
         {
             var piece = Path.GetFileNameWithoutExtension(ImagePath);
-            Piece chessPiece = null;
 
             if (!string.IsNullOrEmpty(piece))
             {
@@ -74,32 +80,32 @@ namespace MyCoin_Desktop.Controls
                 switch (result[1])
                 {
                     case GameConstants.PAWN:
-                        chessPiece = new Pawn(pieceColor);
+                        ButtonPiece = ButtonPiece ?? new Pawn(pieceColor);
                         break;
 
                     case GameConstants.ROOK:
-                        chessPiece = new Rook(pieceColor);
+                        ButtonPiece = ButtonPiece ?? new Rook(pieceColor);
                         break;
 
                     case GameConstants.KNIGHT:
-                        chessPiece = new Knight(pieceColor);
+                        ButtonPiece = ButtonPiece ?? new Knight(pieceColor);
                         break;
 
                     case GameConstants.BISHOP:
-                        chessPiece = new Bishop(pieceColor);
+                        ButtonPiece = ButtonPiece ?? new Bishop(pieceColor);
                         break;
 
                     case GameConstants.QUEEN:
-                        chessPiece = new Queen(pieceColor);
+                        ButtonPiece = ButtonPiece ?? new Queen(pieceColor);
                         break;
 
                     case GameConstants.KING:
-                        chessPiece = new King(pieceColor);
+                        ButtonPiece = ButtonPiece ?? new King(pieceColor);
                         break;
                 }
             }
 
-            return chessPiece;
+            return ButtonPiece;
         }
     }
 }

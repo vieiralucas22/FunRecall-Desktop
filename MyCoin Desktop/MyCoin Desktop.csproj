@@ -134,6 +134,7 @@
     <Compile Include="Entities\Knight.cs" />
     <Compile Include="Entities\Pawn.cs" />
     <Compile Include="Entities\Piece.cs" />
+    <Compile Include="Entities\Position.cs" />
     <Compile Include="Entities\Queen.cs" />
     <Compile Include="Entities\Rook.cs" />
     <Compile Include="Events\GameEvents.cs" />

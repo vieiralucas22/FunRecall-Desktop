@@ -41,6 +41,17 @@
                                     </VisualState.Setters>
                                 </VisualState>
 
+                                <VisualState x:Name="PossiblePosition">
+                                    <VisualState.Setters>
+                                        <Setter Target="Border.BorderThickness"
+                                                Value="4" />
+                                        <Setter Target="Border.BorderBrush"
+                                                Value="#30bbff" />
+                                        <Setter Target="Grid.Background"
+                                                Value="#8030bbff" />
+                                    </VisualState.Setters>
+                                </VisualState>
+
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <Grid x:Name="Grid">
