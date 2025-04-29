@@ -25,14 +25,12 @@ namespace MyCoin_Desktop.Entities
 
         public override List<Position> GetPossiblesMoves(int[,] _chessBoard)
         {
-            //if (IsTheFirstMovement)
-            //{
-            //}
-            //else if (!IsTheFirstMovement)
-            //{
-
-            //}
             return new List<Position>();
+        }
+
+        public override List<Position> GetCapturePosition(int[,] chessBoard)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -37,6 +37,10 @@ namespace MyCoin_Desktop.Entities
         {
             List<Position> positions = new List<Position>();
 
+            foreach(Position capturePosition in GetCapturePosition(chessBoard)){
+                positions.Add(capturePosition);
+            }
+
             if (IsTheFirstMovement)
             {
                 if (IsWhitePiece())
@@ -44,10 +48,11 @@ namespace MyCoin_Desktop.Entities
                     if (IsPositionEmpty(Position.line - 1, Position.column, chessBoard))
                     {
                         positions.Add(new Position(Position.line - 1, Position.column));
-                    }
-                    if (IsPositionEmpty(Position.line - 2, Position.column, chessBoard))
-                    {
-                        positions.Add(new Position(Position.line - 2, Position.column));
+
+                        if (IsPositionEmpty(Position.line - 2, Position.column, chessBoard))
+                        {
+                            positions.Add(new Position(Position.line - 2, Position.column));
+                        }
                     }
 
                     return positions;
@@ -56,10 +61,11 @@ namespace MyCoin_Desktop.Entities
                 if (IsPositionEmpty(Position.line + 1, Position.column, chessBoard))
                 {
                     positions.Add(new Position(Position.line + 1, Position.column));
-                }
-                if (IsPositionEmpty(Position.line + 2, Position.column, chessBoard))
-                {
-                    positions.Add(new Position(Position.line + 2, Position.column));
+
+                    if (IsPositionEmpty(Position.line + 2, Position.column, chessBoard))
+                    {
+                        positions.Add(new Position(Position.line + 2, Position.column));
+                    }
                 }
             }
             else if (!IsTheFirstMovement)
@@ -68,7 +74,6 @@ namespace MyCoin_Desktop.Entities
                 {
                     if (IsValidPosition() && IsPositionEmpty(Position.line - 1, Position.column, chessBoard))
                         positions.Add(new Position(Position.line - 1, Position.column));
-                    return positions;
                 }
                 else
                 {
@@ -80,9 +85,39 @@ namespace MyCoin_Desktop.Entities
             return positions;
         }
 
+        public override List<Position> GetCapturePosition(int[,] chessBoard)
+        {
+            List<Position> capturePositions = new List<Position>();
+
+            if (IsWhitePiece())
+            {
+                if (Position.column != 7 && chessBoard[Position.line - 1, Position.column + 1] < 0)
+                {
+                    capturePositions.Add(new Position(Position.line - 1, Position.column + 1));
+                }
+
+                if (Position.column != 0 && chessBoard[Position.line - 1, Position.column - 1] < 0)
+                {
+                    capturePositions.Add(new Position(Position.line - 1, Position.column - 1));
+                }
+
+                return capturePositions;
+            }
+
+            if (Position.column != 7 && chessBoard[Position.line + 1, Position.column + 1] > 0)
+            {
+                capturePositions.Add(new Position(Position.line + 1, Position.column + 1));
+            }
+
+            if (Position.column != 0 && chessBoard[Position.line + 1, Position.column - 1] > 0)
+            {
+                capturePositions.Add(new Position(Position.line + 1, Position.column - 1));
+            }
+
+            return capturePositions;
+        }
+
         private bool IsPositionEmpty(int line, int column, int[,] chessBoard) => chessBoard[line, column] == 0;
-        private bool IsValidPosition() =>  IsWhitePiece() ? Position.line - 1 >= 0 : Position.line + 1 <= 7;
-        
-        
+        private bool IsValidPosition() => IsWhitePiece() ? Position.line - 1 >= 0 : Position.line + 1 <= 7;
     }
 }

@@ -10,7 +10,5 @@
             this.line = line;
             this.column = column;
         }
-
     }
-
 }

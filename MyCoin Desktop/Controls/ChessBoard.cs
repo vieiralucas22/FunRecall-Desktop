@@ -17,21 +17,22 @@ namespace MyCoin_Desktop.Controls
         #region States
         private const string STATE_SELECTED = "Selected";
         private const string STATE_NO_SELECTED = "NoSelected";
-        private const string STATE_POSSIBLE_POSITION = "PossiblePosition";
+        private const string STATE_MOVE_POSITION = "MovePosition";
+        private const string STATE_CAPTURE_POSITION = "CapturePosition";
         #endregion
 
         private Piece _currentPiece { get; set; }
 
         private int[,] _chessBoard = new int[8, 8]
         {
-        { 2, 3, 4, 6, 5, 4, 3, 2 },
-        { 1, 1, 1, 1, 1, 1, 1, 1 },
-        { 0, 0, 0, 0, 0, 0, 0, 0 },
-        { 0, 0, 0, 0, 0, 0, 0, 0 },
-        { 0, 0, 0, 0, 0, 0, 0, 0 },
-        { 0, 0, 0, 0, 0, 0, 0, 0 },
+        { -2, -3, -4, -6, -5, -4, -3, -2 },
         { -1, -1, -1, -1, -1, -1, -1, -1 },
-        { -2, -3, -4, -6, -5, -4, -3, -2 }
+        { 0, 0, 0, 0, 0, 0, 1, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 1, 1, 1, 1, 1, 1, 1, 1 },
+        { 2, 3, 4, 6, 5, 4, 3, 2 }
         };
 
         public ChessBoard()
@@ -113,8 +114,11 @@ namespace MyCoin_Desktop.Controls
 
             foreach (Position position in possiblePositions)
             {
-                Button button = GetTemplateChild($"ChessButton{position.line}{position.column}") as Button;
-                VisualStateManager.GoToState(button, STATE_POSSIBLE_POSITION, false);
+                ChessBoardButton button = GetTemplateChild($"ChessButton{position.line}{position.column}") as ChessBoardButton;
+                if (button.GetPiece() == null)
+                    VisualStateManager.GoToState(button, STATE_MOVE_POSITION, false);
+                else
+                    VisualStateManager.GoToState(button, STATE_CAPTURE_POSITION, false);
             }
         }
     }

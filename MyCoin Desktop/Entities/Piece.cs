@@ -17,6 +17,7 @@ namespace MyCoin_Desktop.Entities
 
         public abstract void Move();
         public abstract void Capture();
+        public abstract List<Position> GetCapturePosition(int[,] chessBoard);
         public bool IsWhitePiece() => Color.GetDescription().Equals("White");
         public abstract List<Position> GetPossiblesMoves(int[,] _chessBoard);
     }
