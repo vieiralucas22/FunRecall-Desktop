@@ -3,11 +3,8 @@ using MyCoin_Desktop.Entities;
 using MyCoin_Desktop.Util;
 using System;
 using System.Collections.Generic;
-using System.Data.Common;
-using System.Diagnostics;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Shapes;
 
 namespace MyCoin_Desktop.Controls
 {
@@ -22,12 +19,23 @@ namespace MyCoin_Desktop.Controls
         #endregion
 
         private Piece _currentPiece { get; set; }
+        private Piece _selectedPiece { get; set; }
+        private ChessBoardButton _selectedChessButton { get; set; }
+
+        private bool _isUserSelectingAPossition = false;
+
+        public bool IsUserSelectingAPossition
+        {
+            get { return _isUserSelectingAPossition; }
+            set { _isUserSelectingAPossition = value; }
+        }
+
 
         private int[,] _chessBoard = new int[8, 8]
         {
         { -2, -3, -4, -6, -5, -4, -3, -2 },
         { -1, -1, -1, -1, -1, -1, -1, -1 },
-        { 0, 0, 0, 0, 0, 0, 1, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0 },
         { 0, 0, 0, 0, 0, 0, 0, 0 },
         { 0, 0, 0, 0, 0, 0, 0, 0 },
         { 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -56,9 +64,13 @@ namespace MyCoin_Desktop.Controls
         {
             if (!(sender is ChessBoardButton chessBoardButton)) return;
 
+            DiselectAllChessButtons();
+
             (int line, int column) = GameBoardUtil.GetLineAndColumn(chessBoardButton.Tag.ToString());
 
-            _currentPiece = chessBoardButton.GetPiece();
+            _currentPiece = chessBoardButton.ButtonPiece;
+
+            MoveAPiece(chessBoardButton, line, column);
 
             if (_currentPiece == null) return;
 
@@ -69,22 +81,12 @@ namespace MyCoin_Desktop.Controls
 
         private void SelectButtonClicked(ChessBoardButton chessBoardButton)
         {
-            for (int i = 0; i < 8; i++)
-            {
-                for (int j = 0; j < 8; j++)
-                {
-                    if (i == _currentPiece.Position.line && j == _currentPiece.Position.column)
-                        continue;
-
-                    if (GetTemplateChild($"ChessButton{i}{j}") is ChessBoardButton button)
-                        VisualStateManager.GoToState(button, STATE_NO_SELECTED, false);
-                }
-            }
-
-            if (chessBoardButton.GetPiece() != null)
+            if (chessBoardButton.ButtonPiece != null)
             {
                 VisualStateManager.GoToState(chessBoardButton, STATE_SELECTED, false);
                 ShowPossiblePosition(chessBoardButton);
+                _selectedPiece = _currentPiece;
+                _selectedChessButton = chessBoardButton;
             }
         }
 
@@ -115,10 +117,44 @@ namespace MyCoin_Desktop.Controls
             foreach (Position position in possiblePositions)
             {
                 ChessBoardButton button = GetTemplateChild($"ChessButton{position.line}{position.column}") as ChessBoardButton;
-                if (button.GetPiece() == null)
+                if (button.ButtonPiece == null)
                     VisualStateManager.GoToState(button, STATE_MOVE_POSITION, false);
                 else
                     VisualStateManager.GoToState(button, STATE_CAPTURE_POSITION, false);
+            }
+            IsUserSelectingAPossition = true;
+        }
+
+        private void DiselectAllChessButtons()
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    if (GetTemplateChild($"ChessButton{i}{j}") is ChessBoardButton button)
+                        VisualStateManager.GoToState(button, STATE_NO_SELECTED, false);
+                }
+            }
+        }
+
+        private void MoveAPiece(ChessBoardButton chessBoardButton, int line, int column)
+        {
+            if (IsUserSelectingAPossition && _selectedPiece.GetPossiblesMoves(_chessBoard).Contains(new Position(line, column)))
+            {
+                chessBoardButton.ImagePath = _selectedChessButton.ImagePath;
+                chessBoardButton.ButtonPiece = _selectedChessButton.ButtonPiece;
+
+                _selectedChessButton.ResetButton();
+
+                _chessBoard[line, column] = _chessBoard[_selectedPiece.Position.line, _selectedPiece.Position.column];
+                _chessBoard[_selectedPiece.Position.line, _selectedPiece.Position.column] = 0;
+
+                _currentPiece = null;
+
+                if (chessBoardButton.ButtonPiece is Pawn pawn)
+                    pawn.IsTheFirstMovement = false;
+
+                IsUserSelectingAPossition = false;
             }
         }
     }

@@ -1,9 +1,6 @@
 ﻿using MyCoin_Desktop.Common.Enums;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyCoin_Desktop.Entities
 {
@@ -91,12 +88,12 @@ namespace MyCoin_Desktop.Entities
 
             if (IsWhitePiece())
             {
-                if (Position.column != 7 && chessBoard[Position.line - 1, Position.column + 1] < 0)
+                if (IsValidPosition() && HasAPieceToCapture(chessBoard, Position.line - 1, Position.column + 1))
                 {
                     capturePositions.Add(new Position(Position.line - 1, Position.column + 1));
                 }
 
-                if (Position.column != 0 && chessBoard[Position.line - 1, Position.column - 1] < 0)
+                if (IsValidPosition() && HasAPieceToCapture(chessBoard, Position.line - 1, Position.column - 1))
                 {
                     capturePositions.Add(new Position(Position.line - 1, Position.column - 1));
                 }
@@ -104,12 +101,12 @@ namespace MyCoin_Desktop.Entities
                 return capturePositions;
             }
 
-            if (Position.column != 7 && chessBoard[Position.line + 1, Position.column + 1] > 0)
+            if (IsValidPosition() && HasAPieceToCapture(chessBoard, Position.line + 1, Position.column + 1))
             {
                 capturePositions.Add(new Position(Position.line + 1, Position.column + 1));
             }
 
-            if (Position.column != 0 && chessBoard[Position.line + 1, Position.column - 1] > 0)
+            if (IsValidPosition() && HasAPieceToCapture(chessBoard, Position.line + 1, Position.column - 1))
             {
                 capturePositions.Add(new Position(Position.line + 1, Position.column - 1));
             }
@@ -118,6 +115,7 @@ namespace MyCoin_Desktop.Entities
         }
 
         private bool IsPositionEmpty(int line, int column, int[,] chessBoard) => chessBoard[line, column] == 0;
-        private bool IsValidPosition() => IsWhitePiece() ? Position.line - 1 >= 0 : Position.line + 1 <= 7;
+        private bool IsValidPosition() => IsWhitePiece() ? (Position.line - 1 >= 0 && Position.column != 7) : (Position.line + 1 <= 7 && Position.column != 0);
+
     }
 }

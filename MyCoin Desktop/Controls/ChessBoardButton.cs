@@ -38,7 +38,7 @@ namespace MyCoin_Desktop.Controls
         public BitmapImage ImageSource
         {
             get => (BitmapImage)GetValue(ImageSourceProperty);
-            private set => SetValue(ImageSourceProperty, value);
+            set => SetValue(ImageSourceProperty, value);
         }
 
         public static readonly DependencyProperty ImageSourceProperty =
@@ -65,9 +65,15 @@ namespace MyCoin_Desktop.Controls
         public ChessBoardButton()
         {
             DefaultStyleKey = typeof(ChessBoardButton);
+            Loaded += ChessBoardButton_Loaded;
         }
 
-        public Piece GetPiece()
+        private void ChessBoardButton_Loaded(object sender, RoutedEventArgs e)
+        {
+            CreatePiece();
+        }
+
+        public void CreatePiece()
         {
             var piece = Path.GetFileNameWithoutExtension(ImagePath);
 
@@ -105,7 +111,12 @@ namespace MyCoin_Desktop.Controls
                 }
             }
 
-            return ButtonPiece;
+        }
+
+        public void ResetButton() {
+            ImageSource = null;
+            ImagePath = null;
+            ButtonPiece = null;
         }
     }
 }
