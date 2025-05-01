@@ -145,17 +145,15 @@ namespace MyCoin_Desktop.Controls
                 chessBoardButton.ButtonPiece = _selectedChessButton.ButtonPiece;
 
                 _selectedChessButton.ResetButton();
-
-                _chessBoard[line, column] = _chessBoard[_selectedPiece.Position.line, _selectedPiece.Position.column];
-                _chessBoard[_selectedPiece.Position.line, _selectedPiece.Position.column] = 0;
+                _selectedPiece.Move(_chessBoard, line, column);
 
                 _currentPiece = null;
 
                 if (chessBoardButton.ButtonPiece is Pawn pawn)
                     pawn.IsTheFirstMovement = false;
-
-                IsUserSelectingAPossition = false;
             }
+
+            IsUserSelectingAPossition = false;
         }
     }
 }

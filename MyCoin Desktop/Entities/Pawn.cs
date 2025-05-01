@@ -25,11 +25,6 @@ namespace MyCoin_Desktop.Entities
             throw new NotImplementedException();
         }
 
-        public override void Move()
-        {
-            IsTheFirstMovement = false;
-        }
-
         public override List<Position> GetPossiblesMoves(int[,] chessBoard)
         {
             List<Position> positions = new List<Position>();
