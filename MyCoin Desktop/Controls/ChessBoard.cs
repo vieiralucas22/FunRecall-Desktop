@@ -31,17 +31,7 @@ namespace MyCoin_Desktop.Controls
         }
 
 
-        private int[,] _chessBoard = new int[8, 8]
-        {
-        { -2, -3, -4, -6, -5, -4, -3, -2 },
-        { -1, -1, -1, -1, -1, -1, -1, -1 },
-        { 0, 0, 0, 0, 0, 0, 0, 0 },
-        { 0, 0, 0, 0, 0, 0, 0, 0 },
-        { 0, 0, 0, 0, 0, 0, 0, 0 },
-        { 0, 0, 0, 0, 0, 0, 0, 0 },
-        { 1, 1, 1, 1, 1, 1, 1, 1 },
-        { 2, 3, 4, 6, 5, 4, 3, 2 }
-        };
+        
 
         public ChessBoard()
         {
@@ -100,11 +90,11 @@ namespace MyCoin_Desktop.Controls
             {
                 case ChessPieces.PAWN:
                     if (_currentPiece is Pawn pawn)
-                        possiblePositions = pawn.GetPossiblesMoves(_chessBoard);
+                        possiblePositions = pawn.GetPossiblesMoves();
                     break;
                 case ChessPieces.KNIGHT:
                     if (_currentPiece is Knight knight)
-                        possiblePositions = knight.GetPossiblesMoves(_chessBoard);
+                        possiblePositions = knight.GetPossiblesMoves();
                     break;
                 case ChessPieces.BISHOP:
                     break;
@@ -141,13 +131,13 @@ namespace MyCoin_Desktop.Controls
 
         private void MoveAPiece(ChessBoardButton chessBoardButton, int line, int column)
         {
-            if (IsUserSelectingAPossition && _selectedPiece.GetPossiblesMoves(_chessBoard).Contains(new Position(line, column)))
+            if (IsUserSelectingAPossition && _selectedPiece.GetPossiblesMoves().Contains(new Position(line, column)))
             {
                 chessBoardButton.ImagePath = _selectedChessButton.ImagePath;
                 chessBoardButton.ButtonPiece = _selectedChessButton.ButtonPiece;
 
                 _selectedChessButton.ResetButton();
-                _selectedPiece.Move(_chessBoard, line, column);
+                _selectedPiece.Move(line, column);
 
                 _currentPiece = null;
 

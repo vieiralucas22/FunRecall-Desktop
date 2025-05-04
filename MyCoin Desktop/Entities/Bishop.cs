@@ -1,9 +1,6 @@
 ﻿using MyCoin_Desktop.Common.Enums;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyCoin_Desktop.Entities
 {
@@ -18,12 +15,12 @@ namespace MyCoin_Desktop.Entities
             throw new NotImplementedException();
         }
 
-        public override List<Position> GetPossiblesMoves(int[,] _chessBoard)
+        public override List<Position> GetPossiblesMoves()
         {
             return new List<Position>();
         }
 
-        public override List<Position> GetCapturePosition(int[,] chessBoard)
+        public override List<Position> GetCapturePosition()
         {
             throw new NotImplementedException();
         }

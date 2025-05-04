@@ -12,25 +12,24 @@ namespace MyCoin_Desktop.Entities
         public ChessPieces PieceType { get; set; }
         public ChessPiecesColors Color { get; set; }
         public Position Position { get; set; }
+        protected ChessBoard chessBoard;
 
         public Piece(ChessPieces pieceType, ChessPiecesColors color)
         {
             PieceType = pieceType;
             Color = color;
+            chessBoard = ChessBoard.GetInstance;
         }
 
-        public virtual void Move(int[,] chessBoard, int line, int column)
+        public virtual void Move(int line, int column)
         {
-            chessBoard[line, column] = chessBoard[Position.line, Position.column];
-            chessBoard[Position.line, Position.column] = 0;
+            chessBoard.Board[line, column] = chessBoard.Board[Position.line, Position.column];
+            chessBoard.Board[Position.line, Position.column] = 0;
         }
         public abstract void Capture();
-        public abstract List<Position> GetCapturePosition(int[,] chessBoard);
+        public abstract List<Position> GetCapturePosition();
         public bool IsWhitePiece() => Color.GetDescription().Equals("White");
-        public abstract List<Position> GetPossiblesMoves(int[,] _chessBoard);
-        public bool HasAPieceToCapture(int[,] chessBoard, int line, int column)
-        {
-            return IsWhitePiece() ? chessBoard[line, column] < 0 : chessBoard[line, column] > 0;
-        }
+        public abstract List<Position> GetPossiblesMoves();
+        
     }
 }

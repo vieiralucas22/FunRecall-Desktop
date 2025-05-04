@@ -18,12 +18,12 @@ namespace MyCoin_Desktop.Entities
             throw new NotImplementedException();
         }
 
-        public override List<Position> GetPossiblesMoves(int[,] _chessBoard)
+        public override List<Position> GetPossiblesMoves()
         {
             return new List<Position>();
         }
 
-        public override List<Position> GetCapturePosition(int[,] chessBoard)
+        public override List<Position> GetCapturePosition()
         {
             throw new NotImplementedException();
         }

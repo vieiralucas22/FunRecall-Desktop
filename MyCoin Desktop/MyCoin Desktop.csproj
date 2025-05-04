@@ -130,6 +130,7 @@
     <Compile Include="Controls\TicTacToeBoardButton.cs" />
     <Compile Include="Controls\PlayerCardInfo.cs" />
     <Compile Include="Entities\Bishop.cs" />
+    <Compile Include="Entities\ChessBoard.cs" />
     <Compile Include="Entities\King.cs" />
     <Compile Include="Entities\Knight.cs" />
     <Compile Include="Entities\Pawn.cs" />
