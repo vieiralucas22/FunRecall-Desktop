@@ -103,6 +103,8 @@ namespace MyCoin_Desktop.Controls
                         possiblePositions = pawn.GetPossiblesMoves(_chessBoard);
                     break;
                 case ChessPieces.KNIGHT:
+                    if (_currentPiece is Knight knight)
+                        possiblePositions = knight.GetPossiblesMoves(_chessBoard);
                     break;
                 case ChessPieces.BISHOP:
                     break;

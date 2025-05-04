@@ -15,7 +15,6 @@ namespace MyCoin_Desktop.Entities
             set { _isTheFirstMovement = value; }
         }
 
-
         public Pawn(ChessPiecesColors color) : base(ChessPieces.PAWN, color)
         {
         }
