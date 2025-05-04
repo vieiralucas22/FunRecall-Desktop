@@ -100,6 +100,8 @@ namespace MyCoin_Desktop.Controls
                 case ChessPieces.QUEEN:
                     break;
                 case ChessPieces.ROOK:
+                    if (_currentPiece is Rook rook)
+                        possiblePositions = rook.GetPossiblesMoves();
                     break;
                 case ChessPieces.KING:
                     break;
