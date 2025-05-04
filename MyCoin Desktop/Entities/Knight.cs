@@ -45,18 +45,5 @@ namespace MyCoin_Desktop.Entities
 
             return possiblesPositions;
         }
-
-        public override List<Position> GetCapturePosition()
-        {
-            List<Position> capturePositions = new List<Position>();
-
-            foreach (Position position in GetPossiblesMoves())
-            {
-                if (chessBoard.HasAPieceToCapture(position.line, position.column, this))
-                    capturePositions.Add(position);
-            }
-            return capturePositions;
-        }
-
     }
 }

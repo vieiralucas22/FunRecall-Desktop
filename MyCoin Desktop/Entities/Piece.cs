@@ -26,10 +26,23 @@ namespace MyCoin_Desktop.Entities
             chessBoard.Board[line, column] = chessBoard.Board[Position.line, Position.column];
             chessBoard.Board[Position.line, Position.column] = 0;
         }
+
         public abstract void Capture();
-        public abstract List<Position> GetCapturePosition();
+
+        public virtual List<Position> GetCapturePosition()
+        {
+            List<Position> capturePositions = new List<Position>();
+
+            foreach (Position position in GetPossiblesMoves())
+            {
+                if (chessBoard.HasAPieceToCapture(position.line, position.column, this))
+                    capturePositions.Add(position);
+            }
+            return capturePositions;
+        }
+
         public bool IsWhitePiece() => Color.GetDescription().Equals("White");
         public abstract List<Position> GetPossiblesMoves();
-        
+
     }
 }

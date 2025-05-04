@@ -24,14 +24,11 @@ namespace MyCoin_Desktop.Controls
 
         private bool _isUserSelectingAPossition = false;
 
-        public bool IsUserSelectingAPossition
+        public bool IsUserSelectingAPosition
         {
             get { return _isUserSelectingAPossition; }
             set { _isUserSelectingAPossition = value; }
         }
-
-
-        
 
         public ChessBoard()
         {
@@ -97,6 +94,8 @@ namespace MyCoin_Desktop.Controls
                         possiblePositions = knight.GetPossiblesMoves();
                     break;
                 case ChessPieces.BISHOP:
+                    if (_currentPiece is Bishop bishop)
+                        possiblePositions = bishop.GetPossiblesMoves();
                     break;
                 case ChessPieces.QUEEN:
                     break;
@@ -114,7 +113,7 @@ namespace MyCoin_Desktop.Controls
                 else
                     VisualStateManager.GoToState(button, STATE_CAPTURE_POSITION, false);
             }
-            IsUserSelectingAPossition = true;
+            IsUserSelectingAPosition = true;
         }
 
         private void DiselectAllChessButtons()
@@ -131,7 +130,7 @@ namespace MyCoin_Desktop.Controls
 
         private void MoveAPiece(ChessBoardButton chessBoardButton, int line, int column)
         {
-            if (IsUserSelectingAPossition && _selectedPiece.GetPossiblesMoves().Contains(new Position(line, column)))
+            if (IsUserSelectingAPosition && _selectedPiece.GetPossiblesMoves().Contains(new Position(line, column)))
             {
                 chessBoardButton.ImagePath = _selectedChessButton.ImagePath;
                 chessBoardButton.ButtonPiece = _selectedChessButton.ButtonPiece;
@@ -145,7 +144,7 @@ namespace MyCoin_Desktop.Controls
                     pawn.IsTheFirstMovement = false;
             }
 
-            IsUserSelectingAPossition = false;
+            IsUserSelectingAPosition = false;
         }
     }
 }

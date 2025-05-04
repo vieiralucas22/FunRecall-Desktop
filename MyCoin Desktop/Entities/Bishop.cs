@@ -17,12 +17,81 @@ namespace MyCoin_Desktop.Entities
 
         public override List<Position> GetPossiblesMoves()
         {
-            return new List<Position>();
-        }
+            List<Position> possiblePosition = new List<Position>();
 
-        public override List<Position> GetCapturePosition()
-        {
-            throw new NotImplementedException();
+            for (int i = 1; i < chessBoard.Board.GetLength(0); i++)
+            {
+                if (!chessBoard.CheckIfPositionIsOutBoard(Position.line + i, Position.column + i))
+                {
+                    if (chessBoard.IsPositionEmpty(Position.line + i, Position.column + i))
+                    {
+                        possiblePosition.Add(new Position(Position.line + i, Position.column + i));
+                    }
+                    else
+                    {
+                        if (chessBoard.HasAPieceToCapture(Position.line + i, Position.column + i, this))
+                            possiblePosition.Add(new Position(Position.line + i, Position.column + i));
+
+                        break;
+                    }
+                }
+            }
+
+            for (int i = 1; i < chessBoard.Board.GetLength(0); i++)
+            {
+                if (!chessBoard.CheckIfPositionIsOutBoard(Position.line + i, Position.column - i))
+                {
+                    if (chessBoard.IsPositionEmpty(Position.line + i, Position.column - i))
+                    {
+                        possiblePosition.Add(new Position(Position.line + i, Position.column - i));
+                    }
+                    else
+                    {
+                        if (chessBoard.HasAPieceToCapture(Position.line + i, Position.column - i, this))
+                            possiblePosition.Add(new Position(Position.line + i, Position.column - i));
+
+                        break;
+                    }
+                }
+            }
+
+            for (int i = 1; i < chessBoard.Board.GetLength(0); i++)
+            {
+                if (!chessBoard.CheckIfPositionIsOutBoard(Position.line - i, Position.column + i))
+                {
+                    if (chessBoard.IsPositionEmpty(Position.line - i, Position.column + i))
+                    {
+                        possiblePosition.Add(new Position(Position.line - i, Position.column + i));
+                    }
+                    else
+                    {
+                        if (chessBoard.HasAPieceToCapture(Position.line - i, Position.column + i, this))
+                            possiblePosition.Add(new Position(Position.line - i, Position.column + i));
+
+                        break;
+                    }
+                }
+            }
+
+            for (int i = 1; i < chessBoard.Board.GetLength(0); i++)
+            {
+                if (!chessBoard.CheckIfPositionIsOutBoard(Position.line - i, Position.column - i))
+                {
+                    if (chessBoard.IsPositionEmpty(Position.line - i, Position.column - i))
+                    {
+                        possiblePosition.Add(new Position(Position.line - i, Position.column - i));
+                    }
+                    else
+                    {
+                        if (chessBoard.HasAPieceToCapture(Position.line - i, Position.column - i, this))
+                            possiblePosition.Add(new Position(Position.line - i, Position.column - i));
+
+                        break;
+                    }
+                }
+            }
+
+            return possiblePosition;
         }
     }
 }
