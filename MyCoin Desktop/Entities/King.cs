@@ -1,9 +1,6 @@
 ﻿using MyCoin_Desktop.Common.Enums;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyCoin_Desktop.Entities
 {
@@ -20,12 +17,33 @@ namespace MyCoin_Desktop.Entities
 
         public override List<Position> GetPossiblesMoves()
         {
-            return new List<Position>();
-        }
+            List<Position> possibleMoves = new List<Position>();
 
-        public override List<Position> GetCapturePosition()
-        {
-            throw new NotImplementedException();
+            if (ChessBoard.IsValidPosition(Position.line, Position.column - 1, this))
+                possibleMoves.Add(new Position(Position.line, Position.column - 1));
+
+            if (ChessBoard.IsValidPosition(Position.line, Position.column + 1, this))
+                possibleMoves.Add(new Position(Position.line, Position.column + 1));
+
+            if (ChessBoard.IsValidPosition(Position.line - 1, Position.column, this))
+                possibleMoves.Add(new Position(Position.line - 1, Position.column));
+
+            if (ChessBoard.IsValidPosition(Position.line + 1, Position.column, this))
+                possibleMoves.Add(new Position(Position.line + 1, Position.column));
+
+            if (ChessBoard.IsValidPosition(Position.line - 1, Position.column - 1, this))
+                possibleMoves.Add(new Position(Position.line - 1, Position.column - 1));
+
+            if (ChessBoard.IsValidPosition(Position.line + 1, Position.column - 1, this))
+                possibleMoves.Add(new Position(Position.line + 1, Position.column - 1));
+
+            if (ChessBoard.IsValidPosition(Position.line - 1, Position.column + 1, this))
+                possibleMoves.Add(new Position(Position.line - 1, Position.column + 1));
+
+            if (ChessBoard.IsValidPosition(Position.line + 1, Position.column + 1, this))
+                possibleMoves.Add(new Position(Position.line + 1, Position.column + 1));
+
+            return possibleMoves;
         }
     }
 }
