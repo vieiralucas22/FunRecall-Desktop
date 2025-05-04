@@ -36,11 +36,11 @@ namespace MyCoin_Desktop.Entities
             {
                 if (IsWhitePiece())
                 {
-                    if (chessBoard.IsPositionEmpty(Position.line - 1, Position.column))
+                    if (ChessBoard.IsPositionEmpty(Position.line - 1, Position.column))
                     {
                         positions.Add(new Position(Position.line - 1, Position.column));
 
-                        if (chessBoard.IsPositionEmpty(Position.line - 2, Position.column))
+                        if (ChessBoard.IsPositionEmpty(Position.line - 2, Position.column))
                         {
                             positions.Add(new Position(Position.line - 2, Position.column));
                         }
@@ -49,11 +49,11 @@ namespace MyCoin_Desktop.Entities
                     return positions;
                 }
 
-                if (chessBoard.IsPositionEmpty(Position.line + 1, Position.column))
+                if (ChessBoard.IsPositionEmpty(Position.line + 1, Position.column))
                 {
                     positions.Add(new Position(Position.line + 1, Position.column));
 
-                    if (chessBoard.IsPositionEmpty(Position.line + 2, Position.column))
+                    if (ChessBoard.IsPositionEmpty(Position.line + 2, Position.column))
                     {
                         positions.Add(new Position(Position.line + 2, Position.column));
                     }
@@ -63,12 +63,12 @@ namespace MyCoin_Desktop.Entities
             {
                 if (IsWhitePiece())
                 {
-                    if (chessBoard.IsValidPosition(Position.line - 1, Position.column, this) && chessBoard.IsPositionEmpty(Position.line - 1, Position.column))
+                    if (ChessBoard.IsValidPosition(Position.line - 1, Position.column, this) && ChessBoard.IsPositionEmpty(Position.line - 1, Position.column))
                         positions.Add(new Position(Position.line - 1, Position.column));
                 }
                 else
                 {
-                    if (chessBoard.IsValidPosition(Position.line + 1, Position.column, this) && chessBoard.IsPositionEmpty(Position.line + 1, Position.column))
+                    if (ChessBoard.IsValidPosition(Position.line + 1, Position.column, this) && ChessBoard.IsPositionEmpty(Position.line + 1, Position.column))
                         positions.Add(new Position(Position.line + 1, Position.column));
                 }
             }
@@ -82,25 +82,22 @@ namespace MyCoin_Desktop.Entities
 
             if (IsWhitePiece())
             {
-                if (!chessBoard.CheckIfPositionIsOutBoard(Position.line - 1, Position.column + 1) && chessBoard.HasAPieceToCapture(Position.line - 1, Position.column + 1, this))
+                if (!ChessBoard.CheckIfPositionIsOutBoard(Position.line - 1, Position.column + 1) && ChessBoard.HasAPieceToCapture(Position.line - 1, Position.column + 1, this))
                     capturePositions.Add(new Position(Position.line - 1, Position.column + 1));
 
-                if (!chessBoard.CheckIfPositionIsOutBoard(Position.line - 1, Position.column - 1) && chessBoard.HasAPieceToCapture(Position.line - 1, Position.column - 1, this))
+                if (!ChessBoard.CheckIfPositionIsOutBoard(Position.line - 1, Position.column - 1) && ChessBoard.HasAPieceToCapture(Position.line - 1, Position.column - 1, this))
                     capturePositions.Add(new Position(Position.line - 1, Position.column - 1));
 
                 return capturePositions;
             }
 
-            if (!chessBoard.CheckIfPositionIsOutBoard(Position.line + 1, Position.column + 1) && chessBoard.HasAPieceToCapture(Position.line + 1, Position.column + 1, this))
+            if (!ChessBoard.CheckIfPositionIsOutBoard(Position.line + 1, Position.column + 1) && ChessBoard.HasAPieceToCapture(Position.line + 1, Position.column + 1, this))
                 capturePositions.Add(new Position(Position.line + 1, Position.column + 1));
 
-            if (!chessBoard.CheckIfPositionIsOutBoard(Position.line + 1, Position.column - 1) && chessBoard.HasAPieceToCapture(Position.line + 1, Position.column - 1, this))
+            if (!ChessBoard.CheckIfPositionIsOutBoard(Position.line + 1, Position.column - 1) && ChessBoard.HasAPieceToCapture(Position.line + 1, Position.column - 1, this))
                 capturePositions.Add(new Position(Position.line + 1, Position.column - 1));
 
             return capturePositions;
         }
-
-        
-
     }
 }

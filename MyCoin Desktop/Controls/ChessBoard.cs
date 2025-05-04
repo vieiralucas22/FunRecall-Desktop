@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-
+using ChessBoardEntity = MyCoin_Desktop.Entities.ChessBoard;
 namespace MyCoin_Desktop.Controls
 {
     public sealed class ChessBoard : Control
@@ -33,6 +33,16 @@ namespace MyCoin_Desktop.Controls
         public ChessBoard()
         {
             DefaultStyleKey = typeof(ChessBoard);
+            ChessBoardEntity.Board = new int[8, 8] {
+                { -2, -3, -4, -6, -5, -4, -3, -2 },
+                { -1, -1, -1, -1, -1, -1, -1, -1 },
+                { 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 1, 1, 1, 1, 1, 1, 1, 1 },
+                { 2, 3, 4, 6, 5, 4, 3, 2 }
+            };
         }
 
         protected override void OnApplyTemplate()
@@ -98,6 +108,8 @@ namespace MyCoin_Desktop.Controls
                         possiblePositions = bishop.GetPossiblesMoves();
                     break;
                 case ChessPieces.QUEEN:
+                    if (_currentPiece is Queen queen)
+                        possiblePositions = queen.GetPossiblesMoves();
                     break;
                 case ChessPieces.ROOK:
                     if (_currentPiece is Rook rook)

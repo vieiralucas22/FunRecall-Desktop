@@ -19,28 +19,28 @@ namespace MyCoin_Desktop.Entities
         {
             List<Position> possiblesPositions = new List<Position>();
 
-            if (chessBoard.IsValidPosition(Position.line - 1, Position.column - 2, this))
+            if (ChessBoard.IsValidPosition(Position.line - 1, Position.column - 2, this))
                 possiblesPositions.Add(new Position(Position.line - 1, Position.column - 2));
 
-            if (chessBoard.IsValidPosition(Position.line - 2, Position.column - 1, this))
+            if (ChessBoard.IsValidPosition(Position.line - 2, Position.column - 1, this))
                 possiblesPositions.Add(new Position(Position.line - 2, Position.column - 1));
 
-            if (chessBoard.IsValidPosition(Position.line - 2, Position.column + 1, this))
+            if (ChessBoard.IsValidPosition(Position.line - 2, Position.column + 1, this))
                 possiblesPositions.Add(new Position(Position.line - 2, Position.column + 1));
 
-            if (chessBoard.IsValidPosition(Position.line - 1, Position.column + 2, this))
+            if (ChessBoard.IsValidPosition(Position.line - 1, Position.column + 2, this))
                 possiblesPositions.Add(new Position(Position.line - 1, Position.column + 2));
 
-            if (chessBoard.IsValidPosition(Position.line + 1, Position.column - 2, this))
+            if (ChessBoard.IsValidPosition(Position.line + 1, Position.column - 2, this))
                 possiblesPositions.Add(new Position(Position.line + 1, Position.column - 2));
 
-            if (chessBoard.IsValidPosition(Position.line + 2, Position.column - 1, this))
+            if (ChessBoard.IsValidPosition(Position.line + 2, Position.column - 1, this))
                 possiblesPositions.Add(new Position(Position.line + 2, Position.column - 1));
 
-            if (chessBoard.IsValidPosition(Position.line + 1, Position.column + 2, this))
+            if (ChessBoard.IsValidPosition(Position.line + 1, Position.column + 2, this))
                 possiblesPositions.Add(new Position(Position.line + 1, Position.column + 2));
 
-            if (chessBoard.IsValidPosition(Position.line + 2, Position.column + 1, this))
+            if (ChessBoard.IsValidPosition(Position.line + 2, Position.column + 1, this))
                 possiblesPositions.Add(new Position(Position.line + 2, Position.column + 1));
 
             return possiblesPositions;

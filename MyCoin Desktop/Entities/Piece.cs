@@ -12,19 +12,17 @@ namespace MyCoin_Desktop.Entities
         public ChessPieces PieceType { get; set; }
         public ChessPiecesColors Color { get; set; }
         public Position Position { get; set; }
-        protected ChessBoard chessBoard;
 
         public Piece(ChessPieces pieceType, ChessPiecesColors color)
         {
             PieceType = pieceType;
             Color = color;
-            chessBoard = ChessBoard.GetInstance;
         }
 
         public virtual void Move(int line, int column)
         {
-            chessBoard.Board[line, column] = chessBoard.Board[Position.line, Position.column];
-            chessBoard.Board[Position.line, Position.column] = 0;
+            ChessBoard.Board[line, column] = ChessBoard.Board[Position.line, Position.column];
+            ChessBoard.Board[Position.line, Position.column] = 0;
         }
 
         public abstract void Capture();
@@ -35,7 +33,7 @@ namespace MyCoin_Desktop.Entities
 
             foreach (Position position in GetPossiblesMoves())
             {
-                if (chessBoard.HasAPieceToCapture(position.line, position.column, this))
+                if (ChessBoard.HasAPieceToCapture(position.line, position.column, this))
                     capturePositions.Add(position);
             }
             return capturePositions;
